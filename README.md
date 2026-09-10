@@ -1,3 +1,3 @@
-# Cloud Computing
+# Cloud Computing (COMP 388)
 
 Sydel Ugwu
