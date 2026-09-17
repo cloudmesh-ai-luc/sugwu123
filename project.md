@@ -57,3 +57,6 @@ Web Dashboard
      User
 																															
 Week 3 Git command-line practice completed.
+
+## Git Practice
+Week 3 Git command-line practice completed.
