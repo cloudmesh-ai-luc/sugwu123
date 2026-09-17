@@ -55,3 +55,5 @@ Web Dashboard
        |
        v
      User
+																															
+Week 3 Git command-line practice completed.
