@@ -17,7 +17,7 @@ Sydel Ugwu
   - [x] Document the activity with a screenshot of the terminal (800x600).
   - [x] [vms.md](assignments/week3/vms.md)
 
-- [ ] Assignment W3.3: OPTIONAL: VM on public cloud
+- [x] Assignment W3.3: OPTIONAL: VM on public cloud
 
 - [x] Assignment W3.4: Compare
   - [x] Compare local VM, Chameleon Cloud, and Jetstream 2.
@@ -26,7 +26,7 @@ Sydel Ugwu
 - [x] Assignment W3.5: README.md
   - [x] README updated with Week 3 assignments and links.
 
-- [ ] Assignment W3.6: Git from command line
+- [x] Assignment W3.6: Git from command line
 
 
 
