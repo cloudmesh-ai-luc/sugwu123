@@ -60,3 +60,4 @@ Week 3 Git command-line practice completed.
 
 ## Git Practice
 Week 3 Git command-line practice completed.
+Git workflow verified from the command line.
