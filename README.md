@@ -27,6 +27,16 @@ Sydel Ugwu
   - [x] README updated with Week 3 assignments and links.
 
 - [x] Assignment W3.6: Git from command line
+  - [x] Work with a fork
+  - [x] git clone
+  - [x] git commit -a
+  - [x] git commit -m "msg" file
+  - [x] git push
+  - [x] git pull
+  - [x] Create a pull request
+  - [x] Accept a pull request
+  - [x] Configure Git username, email, and editor
+  - [Pull Request](https://github.com/cloudmesh-ai-luc/sugwu123/pull/1)
 
 
 
