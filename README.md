@@ -1,6 +1,42 @@
 # Cloud Computing (COMP 388)
 Sydel Ugwu
 
+
+## Week 4
+
+- [x] Assignment W4.1: VM on local machine via Makefile
+  - [x] Manage a local VM using Multipass and a Makefile.
+  - [x] Support multiple machines by changing the NAME variable.
+  - [x] Organize local and cloud Makefiles in separate directories.
+  - [x] [Local VM Makefile](assignments/week4/local/Makefile)
+
+- [x] Assignment W4.2: VM on Jetstream 2
+  - [x] Install the OpenStack command-line client using pipx.
+  - [x] Create and manage a Jetstream 2 VM with a Makefile.
+  - [x] Test VM create, list, info, stop, start, and delete commands.
+  - [x] Support multiple machines by changing the NAME variable.
+  - [x] [Jetstream 2 Makefile](assignments/week4/jetstream/Makefile)
+
+- [x] Assignment W4.3: VM on Chameleon Cloud
+  - [x] Install the OpenStack command-line client.
+  - [x] Install python-chi.
+  - [x] Create and manage a Chameleon VM with a Makefile.
+  - [x] Use an active Chameleon reservation flavor for VM creation.
+  - [x] Test VM create, list, info, stop, start, and delete commands.
+  - [x] Support multiple machines by changing the NAME variable.
+  - [x] [Chameleon Makefile](assignments/week4/chameleon/Makefile)
+
+- [x] Assignment W4.4: Review Python
+  - [x] Create and use a Python virtual environment.
+  - [x] Review pip and pipx.
+  - [x] Review functions and __main__.
+  - [x] Pass arguments from the command line using Click.
+  - [x] Run shell commands using os.system().
+  - [x] Run shell commands using subprocess.run().
+  - [x] [Python Review](assignments/week4/python/review.py)
+
+
+
 ## Week 3
 
 - [x] Assignment W3.1: VM on Jetstream
