@@ -1,0 +1,87 @@
+
+Testing: CLI help
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: CLI help (exit 1)
+
+Testing: VM listing
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: VM listing (exit 1)
+
+Testing: VM information
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: VM information (exit 1)
+
+Testing: Remote hostname
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Remote hostname (exit 1)
+
+Testing: Restart
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Restart (exit 1)
+
+Testing: Stop
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Stop (exit 1)
+
+Testing: State after stop
+Name:           sugwu-week5-test
+State:          Running
+Snapshots:      0
+IPv4:           192.168.252.5
+Release:        Ubuntu 24.04.5 LTS
+Image hash:     1d6bffe64b84 (Ubuntu 24.04 LTS)
+CPU(s):         2
+Load:           0.10 0.05 0.01
+Disk usage:     2.0GiB out of 9.6GiB
+Memory usage:   229.7MiB out of 1.9GiB
+Mounts:         --
+PASS: State after stop
+
+Testing: Start existing VM
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Start existing VM (exit 1)
+
+Testing: Restore using restart
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Restore using restart (exit 1)
+
+Testing: Delete dedicated test VM
+Traceback (most recent call last):
+  File "/Users/sydelugwu/Desktop/cloudmesh-ai-vm/.venv/bin/cmx", line 3, in <module>
+    from cloudmesh.ai.command.vm import cmx
+ModuleNotFoundError: No module named 'cloudmesh.ai.command'
+FAIL: Delete dedicated test VM (exit 1)
+
+Testing: Final inventory
+Name                    State             IPv4             Image
+balmy-bedbug            Stopped           --               Ubuntu 26.04 LTS
+sugwu-week5-test        Running           192.168.252.5    Ubuntu 24.04 LTS
+week2-vm                Running           192.168.252.3    Ubuntu 26.04 LTS
+week4-local             Running           192.168.252.4    Ubuntu 24.04 LTS
+PASS: Final inventory
+
+Results: 2 passed, 9 failed

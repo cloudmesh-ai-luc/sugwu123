@@ -1,0 +1,35 @@
+Usage: cmx vm [OPTIONS] COMMAND [ARGS]...
+
+  VM management commands
+
+Options:
+  --cloud TEXT       Override the default cloud provider
+  --debug            Enable debug logging
+  --verbose          Print raw subprocess/SSH commands
+  -i, --interactive  Enter interactive mode
+  --help             Show this message and exit.
+
+Commands:
+  account         List account information and resource limits for the...
+  cloud           Manage VM cloud provider.
+  config          Manage VM CLI configuration.
+  delete          Deletes one or more VMs.
+  flavor          List available VM flavor.
+  horizon         Open the Horizon dashboard for the active cloud provider.
+  image           List available VM image.
+  info            Get detailed information about a specific VM.
+  key             Manage VM SSH keys.
+  list            List VM resources.
+  login           Log into a VM or get connection details.
+  provider        Manage VM cloud provider.
+  reset           Resets a VM or the provider service.
+  restart         Restarts one or more VMs.
+  run             Executes a command on a VM.
+  security-group  Manage VM security groups.
+  shelve          Shelve one or more VMs (OpenStack only).
+  ssh             Start an interactive SSH session with the VM.
+  ssh-config      Generate SSH config for the VM.
+  start           Starts or launches VMs.
+  stop            Stops one or more VMs.
+  suspend         Suspends one or more VMs.
+  unshelve        Unshelve one or more VMs (OpenStack only).

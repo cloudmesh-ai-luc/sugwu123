@@ -1,0 +1,8 @@
+                           VMs on multipass                           
+┏━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ Name         ┃ Status  ┃ IP            ┃ Image ┃ Flavor ┃ Networks ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+│ balmy-bedbug │ Stopped │ --            │ None  │ None   │ None     │
+│ week2-vm     │ Running │ 192.168.252.3 │ None  │ None   │ None     │
+│ week4-local  │ Running │ 192.168.252.4 │ None  │ None   │ None     │
+└──────────────┴─────────┴───────────────┴───────┴────────┴──────────┘

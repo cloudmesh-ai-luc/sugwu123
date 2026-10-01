@@ -2,6 +2,16 @@
 Sydel Ugwu
 
 
+## Week 5
+
+- [x] Fork, configure, and launch a test VM.
+- [x] Prepare repairs and create a verification script.
+- [x] Record progress and unfinished work.
+- [ ] Fully validate all commands and naming behavior.
+- [ ] Complete upstream PR and class collaboration.
+
+[Week 5 report](assignments/week5/README.md)
+
 ## Week 4
 
 - [x] Assignment W4.1: VM on local machine via Makefile

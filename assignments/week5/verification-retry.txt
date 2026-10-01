@@ -1,0 +1,105 @@
+
+Testing: CLI help
+Usage: cmx vm [OPTIONS] COMMAND [ARGS]...
+
+  VM management commands
+
+Options:
+  --cloud TEXT       Override the default cloud provider
+  --debug            Enable debug logging
+  --verbose          Print raw subprocess/SSH commands
+  -i, --interactive  Enter interactive mode
+  --help             Show this message and exit.
+
+Commands:
+  account         List account information and resource limits for the...
+  cloud           Manage VM cloud provider.
+  config          Manage VM CLI configuration.
+  delete          Deletes one or more VMs.
+  flavor          List available VM flavor.
+  horizon         Open the Horizon dashboard for the active cloud provider.
+  image           List available VM image.
+  info            Get detailed information about a specific VM.
+  key             Manage VM SSH keys.
+  list            List VM resources.
+  login           Log into a VM or get connection details.
+  provider        Manage VM cloud provider.
+  reset           Resets a VM or the provider service.
+  restart         Restarts one or more VMs.
+  run             Executes a command on a VM.
+  security-group  Manage VM security groups.
+  shelve          Shelve one or more VMs (OpenStack only).
+  ssh             Start an interactive SSH session with the VM.
+  ssh-config      Generate SSH config for the VM.
+  start           Starts or launches VMs.
+  stop            Stops one or more VMs.
+  suspend         Suspends one or more VMs.
+  unshelve        Unshelve one or more VMs (OpenStack only).
+PASS: CLI help
+
+Testing: VM listing
+                             VMs on multipass                             
+┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ Name             ┃ Status  ┃ IP            ┃ Image ┃ Flavor ┃ Networks ┃
+┡━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+│ balmy-bedbug     │ Stopped │ --            │ None  │ None   │ None     │
+│ sugwu-week5-test │ Running │ 192.168.252.5 │ None  │ None   │ None     │
+│ week2-vm         │ Running │ 192.168.252.3 │ None  │ None   │ None     │
+│ week4-local      │ Running │ 192.168.252.4 │ None  │ None   │ None     │
+└──────────────────┴─────────┴───────────────┴───────┴────────┴──────────┘
+PASS: VM listing
+
+Testing: VM information
+Unexpected Error: Provider 'multipass' does not support the feature: info
+Aborted!
+FAIL: VM information (exit 1)
+
+Testing: Remote hostname
+Unexpected Error: Provider 'multipass' does not support the feature: run_command
+Aborted!
+FAIL: Remote hostname (exit 1)
+
+Testing: Restart
+[2K[0A[0EStopping sugwu-week5-test  /-\|/-\|/- [2K[0A[0E[2K[0A[0EStarting sugwu-week5-test  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| [2K[0A[0E[2K[0A[0ESuccessfully restarted VM sugwu-week5-test.
+PASS: Restart
+
+Testing: Stop
+[2K[0A[0EStopping sugwu-week5-test  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\| [2K[0A[0ESuccessfully stopped VM sugwu-week5-test.
+PASS: Stop
+
+Testing: State after stop
+Name:           sugwu-week5-test
+State:          Stopped
+Snapshots:      0
+IPv4:           --
+Release:        --
+Image hash:     1d6bffe64b84 (Ubuntu 24.04 LTS)
+CPU(s):         --
+Load:           --
+Disk usage:     --
+Memory usage:   --
+Mounts:         --
+PASS: State after stop
+
+Testing: Start existing VM
+[2K[0A[0Elaunch failed: instance "sugwu-week5-test" already exists
+[2K[0A[0EUnexpected Error: Command '['multipass', 'launch', '-c', '2', '-m', '2G', '-d', '10G', '-n', 'sugwu-week5-test', '24.04']' returned non-zero exit status 2.
+Aborted!
+FAIL: Start existing VM (exit 1)
+
+Testing: Restore using restart
+[2K[0A[0EStopping sugwu-week5-test  / [2K[0A[0E[2K[0A[0EStarting sugwu-week5-test  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ [2K[0A[0E[2K[0A[0ESuccessfully restarted VM sugwu-week5-test.
+PASS: Restore using restart
+
+Testing: Delete dedicated test VM
+Successfully deleted VM sugwu-week5-test.
+PASS: Delete dedicated test VM
+
+Testing: Final inventory
+Name                    State             IPv4             Image
+balmy-bedbug            Stopped           --               Ubuntu 26.04 LTS
+week2-vm                Running           192.168.252.3    Ubuntu 26.04 LTS
+week4-local             Running           192.168.252.4    Ubuntu 24.04 LTS
+PASS: Final inventory
+
+Results: 8 passed, 3 failed
