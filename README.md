@@ -1,6 +1,19 @@
 # Cloud Computing (COMP 388)
 Sydel Ugwu
 
+## Sports Project
+
+This is a solo Sports Statistics and Probability Analysis Platform project.
+
+- [Project proposal and scope](project.md)
+- [Runnable sports prototype](sports/README.md)
+- [Midterm progress report](project/project.md)
+- [Midterm preparation checklist](project/midterm-checklist.md)
+- [Prototype verification](project/verification.txt)
+
+The prototype uses explicitly fictional basketball data. Real historical data,
+host-side VM deployment evidence, and instructor approval remain to be recorded.
+
 
 ## Week 5
 

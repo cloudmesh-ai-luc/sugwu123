@@ -41,3 +41,25 @@ Full command coverage and naming-counter behavior remain unverified. Import beha
 The intermittent editable-install namespace errors are still unexplained.
 Further background on Python namespace packages and setuptools editable
 installations is needed to diagnose that behavior.
+
+## Connection to the Sports Project
+
+The [Sports Statistics and Probability Analysis Platform](../../project.md)
+needs a backend to ingest sports observations, store them, calculate statistics,
+and serve its dashboard. Week 5 supports the VM infrastructure needed to host
+those components. Dependency repairs, named-VM deletion, and command verification
+help make that infrastructure reproducible and safer to manage.
+
+The [sports prototype](../../sports/README.md) provides the application layer:
+SQLite storage, team/player/opponent filters, historical threshold rates,
+uncertainty intervals, a chronological baseline evaluation, a CLI, and a JSON API.
+Its dedicated VM deployment script uses native Multipass commands while the
+recorded cmx provider failures remain unresolved.
+
+The Week 5 result remains **8 passed and 3 failed**, including two native
+Multipass queries among the successful checks. Full command and naming coverage
+is still unverified. The disposable Week 5 VM was a tool-validation VM; it was
+not evidence of a deployed sports application or a validated sports prediction.
+
+This work was performed individually. See the [midterm progress report](../../project/project.md)
+for the application evidence and remaining project tasks.

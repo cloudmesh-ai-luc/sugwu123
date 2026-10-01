@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports Statistics and Probability Analysis</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <p class="eyebrow">Sports Statistics and Probability Analysis Platform</p>
+      <h1>Understand the numbers.</h1>
+      <p class="intro">Explore teams, players, and matchups through historical performance and uncertainty.</p>
+    </div>
+  </header>
+  <main class="shell">
+    <p id="dataset" class="notice" role="status">Loading dataset information...</p>
+    <form id="filters" class="filters">
+      <label>Team<select id="team" required></select></label>
+      <label>Player<select id="player"></select></label>
+      <label>Opponent<select id="opponent"></select></label>
+      <label>Points threshold<input id="threshold" type="number" min="0" max="1000" step="0.5" value="100.5" required></label>
+      <button type="submit">Analyze</button>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section id="results" hidden>
+      <div class="section-heading"><h2 id="selection">Historical analysis</h2><span id="metric" class="tag"></span></div>
+      <div class="cards">
+        <article class="card"><p>Historical rate above threshold</p><strong id="rate"></strong><small id="events"></small></article>
+        <article class="card"><p>95% Wilson interval</p><strong id="interval"></strong><small>Uncertainty in the historical rate</small></article>
+        <article class="card"><p>Average points</p><strong id="average"></strong><small id="sample"></small></article>
+        <article class="card"><p>Team record in selected games</p><strong id="record"></strong><small>Wins / losses / draws</small></article>
+      </div>
+      <article class="panel">
+        <h3 id="chart-title">Points by game</h3>
+        <p class="muted">Chronological game sequence. The gold line marks the selected threshold.</p>
+        <svg id="chart" viewBox="0 0 960 270" role="img" aria-labelledby="chart-title"></svg>
+      </article>
+      <div class="lower-grid">
+        <article class="panel">
+          <h3>Chronological baseline evaluation</h3>
+          <p>Each probability uses earlier dates only, with Laplace smoothing after at least five games.</p>
+          <dl><div><dt>Games evaluated</dt><dd id="evaluated"></dd></div><div><dt>Model Brier score</dt><dd id="brier"></dd></div><div><dt>Constant 50% baseline</dt><dd id="baseline"></dd></div></dl>
+          <p class="muted">A lower Brier score means less squared probability error. Results on fictional data demonstrate the workflow and do not establish real sports accuracy.</p>
+        </article>
+        <article class="panel">
+          <h3>Recent observations</h3>
+          <div class="table-scroll"><table><caption class="muted">Up to ten selected games, newest first</caption><thead><tr><th>Date</th><th>Opponent</th><th>Points</th></tr></thead><tbody id="observations"></tbody></table></div>
+        </article>
+      </div>
+      <p id="interpretation" class="footnote"></p>
+    </section>
+  </main>
+  <footer class="shell">COMP 388 solo project prototype</footer>
+</body>
+</html>
