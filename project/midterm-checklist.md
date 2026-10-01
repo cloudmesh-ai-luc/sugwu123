@@ -16,8 +16,8 @@ plan based on those requirements, not a separately published midterm grading rub
 | Formal instructor approval | Not documented | Confirm approval and record its date/context |
 | Non-trivial statistical application | Threshold rates, uncertainty, chronological baseline evaluation | Run a documented real-data experiment |
 | CLI/API access and justified GUI | Shared CLI/API analysis; dashboard for trends and intervals | Demonstrate both CLI and dashboard |
-| Automated VM management | Dedicated Multipass script and Makefile | Run deployment and stop/start on the Mac |
-| Reproducible results | 23 tests and verification output | Repeat on the student's host and retain results |
+| Automated VM management | Dedicated Multipass deployment succeeded; service healthy | Verify stop/start persistence |
+| Reproducible results | 23 tests passed in preparation environment and in the deployed guest | Retain deployment evidence and demonstrate the app from the Mac |
 | Permitted data, no raw data in Git | Generated demo and ignore rules; import provenance fields | Select a licensed/public-domain dataset and retain it outside Git |
 | Coursework and contribution review | Week 1–5 links and upstream PR #11 | Resolve or clearly report remaining Week 5 failures and participation status |
 
@@ -26,17 +26,22 @@ plan based on those requirements, not a separately published midterm grading rub
 - [x] Connect the prototype to the original sports objectives.
 - [x] Document that this is a solo project.
 - [x] Provide application tests, CLI/API access, and source-based demo generation.
-- [x] Prepare deployment automation and document its unverified status.
-- [ ] Publish the prepared prototype and reports to the class repository.
+- [x] Prepare deployment automation and run it on the Mac.
+- [x] Publish the prototype and reports to the class repository.
 - [ ] Confirm formal instructor approval.
 - [ ] Import a permitted historical dataset with recorded source and rights.
 - [ ] Evaluate that dataset chronologically and explain uncertainty and bias.
-- [ ] Run the sports VM deployment and save a real health response/screenshot.
+- [x] Run the sports VM deployment and retain a real health response/screenshot.
+- [ ] Verify the dashboard and API from the Mac browser/terminal.
 - [ ] Verify database persistence after stopping and starting the project VM.
-- [ ] Update the progress report to describe only results actually observed.
+- [x] Update the progress report with the observed deployment results.
 - [ ] Review course/programming concepts and class contributions for the midterm.
 
 ## Host Verification
+
+The [October 1 deployment screenshot](vm-deployment.md) records a successful
+guest deployment, 23 passing guest tests, and a healthy service. Dashboard
+reachability and stop/start persistence remain unverified.
 
 From the class repository root, retain the host test output separately from the
 preparation-environment verification:

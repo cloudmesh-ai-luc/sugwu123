@@ -124,10 +124,13 @@ python3 -m sports.vm delete --name sports-midterm --confirm-name sports-midterm
 ```
 
 The helper uses `multipass delete --purge NAME`, scoped to the named instance.[^multipass]
-An end-to-end VM deployment has **not yet been observed** in the preparation
-environment, where Multipass is unavailable. Run it on the Mac and record evidence
-before marking cloud deployment complete. The project's native Multipass
-automation does not resolve the separate Week 5 cmx failures.
+The automated deployment was **verified on the Mac on October 1, 2026**:
+`sports-midterm` was running on Ubuntu 24.04, all 23 guest tests passed, and the
+service returned `status: ok` with 144 generated observations. See the
+[deployment evidence](../project/vm-deployment.md). Dashboard access from the Mac
+and database persistence after stop/start still require verification.
+The project's native Multipass automation does not resolve the separate
+Week 5 cmx failures.
 
 ## Verification and Status
 
@@ -136,8 +139,9 @@ once, chronological leakage, CSV/provenance persistence, rejected imports,
 CLI/API agreement, API validation, archive exclusions, and deletion safeguards.
 See [verification output](../project/verification.txt).
 
-Remaining milestones: permitted historical data, real-data evaluation, actual
-VM deployment evidence, instructor approval confirmation, and a midterm demo.
+Remaining milestones: permitted historical data, real-data evaluation,
+dashboard and persistence verification, instructor approval confirmation,
+and a midterm demo.
 AI explanations and a remote-cloud deployment are optional future extensions
 and are not implemented.
 

@@ -17,10 +17,11 @@ for statistical reference values, prevention of same-day evaluation leakage,
 dataset validation, and agreement between CLI and API results. These results
 establish prototype behavior rather than predictive accuracy on real sports.
 Week 5's VM contribution provides related infrastructure experience, with eight
-successful checks and three unresolved failures. A dedicated Multipass deployment
-script has been prepared but has not yet been run on the student's host. The
-next milestones are a permitted historical dataset, real-data evaluation,
-recorded VM deployment, and confirmation of instructor approval.
+successful checks and three unresolved failures. The automated Multipass deployment
+completed on the student's Mac, with all 23 tests passing inside the guest and
+a healthy service response. The next milestones are a permitted historical
+dataset, real-data evaluation, dashboard and persistence verification,
+and confirmation of instructor approval.
 
 **Keywords:** sports analytics, probability, uncertainty, cloud automation, reproducibility
 
@@ -87,18 +88,21 @@ source of bias; it is not handled by this preliminary evaluator.
 | Wilson reference fixture | 5 of 10 events: interval approximately 0.2366 to 0.7634 | Interval calculation matches the reference value |
 | Fictional demo player sample | 18 selected games; 13 chronologically evaluated | Evaluation workflow executes; this is not real-data model accuracy |
 | Week 5 VM checks | 8 passed, 3 failed | Partial provider validation; two successes are native Multipass queries |
-| Sports VM deployment | Script prepared; host run pending | No deployment-success claim is supported yet |
+| Sports VM deployment | sports-midterm running on Ubuntu 24.04; 23 guest tests passed; health response ok | Automated deployment succeeded; dashboard and stop/start persistence require verification |
 
 Table 1 distinguishes application tests from the separate Week 5 checks.
 [Prototype verification](verification.txt) records the actual test output.
 [Week 5 evidence](../assignments/week5/README.md) records the infrastructure result,
 including unresolved cmx info, remote-command, and existing-VM start behavior.
-The earlier tool-test VM was not a sports application deployment.
+The earlier tool-test VM was not a sports application deployment. The separate
+October 1 [sports deployment evidence](vm-deployment.md) records the successful
+application deployment and guest test output.
 
 The deployment helper automates launch/resume, source transfer, guest tests,
 service setup, and health verification. Archive and naming tests verify selected
-safeguards, not the execution of a real Multipass guest. Host execution and
-stop/start persistence still require recorded evidence.
+safeguards. The host deployment screenshot separately verifies launch, guest
+tests, service health, and running VM state. Host browser access and stop/start
+persistence still require recorded evidence.
 
 ## Discussion and Next Steps
 
@@ -109,9 +113,10 @@ next experiment will document the dataset/license, fix the threshold and
 evaluation rule before examining held-out results, and compare the baseline error
 across sufficiently large player/opponent samples.
 
-The next deployment experiment is to run `make -C sports vm-deploy` on the Mac,
-record the health response and dashboard, and verify that stop/start retains
-the database. Formal instructor approval must also be confirmed; it is not
+The deployment command `make -C sports vm-deploy` completed successfully on
+October 1. The next deployment checks are to inspect the dashboard from the Mac
+and verify that stop/start retains the database. Formal instructor approval
+must also be confirmed; it is not
 recorded in the current repository. The [preparation checklist](midterm-checklist.md)
 tracks these tasks and the tentative midterm date.
 

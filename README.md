@@ -10,9 +10,12 @@ This is a solo Sports Statistics and Probability Analysis Platform project.
 - [Midterm progress report](project/project.md)
 - [Midterm preparation checklist](project/midterm-checklist.md)
 - [Prototype verification](project/verification.txt)
+- [Sports VM deployment evidence](project/vm-deployment.md)
 
+The sports application was deployed to a dedicated local Multipass VM on October 1,
+2026. All 23 tests passed in the guest and the service returned a healthy response.
 The prototype uses explicitly fictional basketball data. Real historical data,
-host-side VM deployment evidence, and instructor approval remain to be recorded.
+dashboard and stop/start verification, and instructor approval remain to be recorded.
 
 
 ## Week 5

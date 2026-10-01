@@ -58,15 +58,16 @@ The same analysis runs through the CLI and API. The dashboard is an optional vis
 | --- | --- | --- |
 | Historical statistics | Validated CSV import with source and rights metadata; generated demonstration data | Select and import a permitted real dataset |
 | Probability models | Historical threshold rate, 95% Wilson interval, chronological baseline evaluation | Evaluate real observations and discuss limitations |
-| Web application | Team, player, and opponent filters; chart and recent observations | Capture a demo from the deployed VM |
-| Cloud storage and processing | SQLite backend and automated dedicated Multipass deployment script | Run and record VM deployment on the host |
+| Web application | Team, player, and opponent filters; chart and recent observations | Verify the dashboard from the Mac and capture a demo |
+| Cloud storage and processing | Automated Multipass deployment succeeded; guest tests and health check passed | Verify stop/start persistence |
 | AI explanations | Optional future extension | Decide whether it helps explain verified results |
-| GitHub and DevOps | CLI, API, Makefile, verification tests, and Week 5 contribution | Publish this prototype and keep progress commits |
+| GitHub and DevOps | Published prototype, CLI, API, Makefile, verification tests, and Week 5 contribution | Keep progress commits and deployment evidence |
 
 - [Runnable prototype and instructions](sports/README.md)
 - [Midterm progress report](project/project.md)
 - [Midterm preparation checklist](project/midterm-checklist.md)
 - [Prototype verification](project/verification.txt)
+- [Sports VM deployment evidence](project/vm-deployment.md)
 - [Week 5 infrastructure contribution](assignments/week5/README.md)
 
 The Week 5 test VM was used for cloudmesh-ai-vm validation. It does not demonstrate that the sports application was deployed. The sports deployment script uses native Multipass commands because the recorded Week 5 `cmx info`, `run`, and resume behavior still require fixes.
