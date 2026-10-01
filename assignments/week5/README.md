@@ -1,65 +1,150 @@
 # Week 5 Progress
 Sydel Ugwu
 
-This implementation was completed individually.
+This is an individual Multipass contribution to cloudmesh-ai-vm.
+The selected local provider supports the solo Sports Statistics and Probability
+Analysis Platform. This update records additional work prepared on October 1;
+it does not change the earlier verification evidence or imply everything was
+finished by the 9 am deadline.
 
 ## Completed work
 
-Forked and cloned cloudmesh-ai-vm and created a feature branch. Added missing dependencies and List imports. Configured Multipass and successfully launched an Ubuntu 24.04 test VM through cmx. Prepared a deletion change that targets only the named VM. Created verify_vm.sh and retained verification logs.
+Forked and cloned the tool, created feature/week5-multipass, and opened
+[upstream PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
+The original contribution repaired dependencies, List imports, and named-VM
+deletion, and documented an Ubuntu 24.04 launch.
+
+The follow-up contribution adds Multipass info and guest execution, resumes
+existing stopped or suspended instances, and uses native restart and suspend.
+It adds --name without counter increments, automatic naming with collision
+avoidance, list formats, typed configuration commands, and managed guest shells.
+Inventory failures now propagate instead of being reported as an empty list.
+The provider no longer invents a user SSH key path or security-group resources.
+
+Updated the provider guide and manual, added regression tests, and prepared
+a disposable verification script. Live verification is recorded below.
 
 ## Verification
 
-Results: 8 passed, 3 failed
+| Evidence | Result | Scope |
+| --- | --- | --- |
+| Earlier Mac verification | 8 passed, 3 failed | Actual host log; two passes were native information queries. |
+| Updated unit checks | 117 passed | Python 3.12; mocked provider calls and simulated CLI processes. |
+| Shell verifier regression cases | 4 passed, included in the 117 | Success, preflight failure, suspend failure, and launch failure. |
+| Latest Mac run | 50 passed, 0 failed | [Actual host log](verification-week5.txt); selected scope verified. |
 
-The earlier run recorded two successful information queries and nine CLI import failures. Those successful queries do not establish successful stopping or deletion. See the logs for the actual command output.
+The updated checks ran with:
 
+~~~bash
+python -m pytest -q tests/unit --ignore=tests/unit/test_vm.py
+~~~
+
+The excluded legacy test imports cloudmesh.ai.cmc, a separate package not
+declared by the standalone VM project. That integration remains unverified.
+The shell verifier's simulated success case completes 50 checks. Two of these
+check expected unsupported errors for shelving; they are not working shelving
+operations. Simulated tests do not establish that these commands ran on my Mac.
+
+The earlier log identifies three failures: info and run were not implemented,
+and start tried to launch an existing name. The earlier import-failure log is
+also retained. The two successful native queries in that older attempt do not
+prove stopping or deletion.
+
+## Latest Mac verification
+
+Recorded from [verification-week5.txt](verification-week5.txt) at 2026-10-01T13:04:02-05:00.
+Actual script summary: **50 passed, 0 failed**.
+
+The required lifecycle, naming, list-format, and inventory-preservation checks passed.
+This confirms the script's selected Multipass scope, including expected-error checks.
+
+Interactive shells, daemon reset, CMC integration, remaining CLI gaps,
+other providers, and class participation are still separate tasks.
+Unsupported shelving checks are not successful shelving operations.
 ## Code understanding
 
-Click exposes CLI commands, clouds.yaml stores provider settings and VM state, and provider methods perform the operations. Multipass uses subprocess calls. Remote providers use Libcloud drivers, whose supported features and authentication vary between clouds.
+Click loads command modules and passes the selected provider and arguments.
+clouds.yaml stores the default provider, resource settings, username, counter,
+and last-used VM. StateManager persists those values through YamlDB.
+Provider methods translate operations into the appropriate backend calls.
+Multipass uses subprocess argument lists and JSON inventory; run invokes a
+shell inside the guest through multipass exec. Other cloud providers use
+interfaces such as Libcloud, whose authentication and capabilities vary.
 
-## Self-assessment
+The existing dynamic CLI, provider classes, and many lifecycle command modules
+were already present. This contribution repairs and completes selected methods
+rather than claiming that those existing components were newly created.
 
-Full command coverage and naming-counter behavior remain unverified. Import behavior and failing provider operations need further investigation. Remote Libcloud providers, shelve/unshelve, Piazza coordination, and peer review remain unfinished. Existing CLI commands and provider classes were already present, so this work focused on repairs and validation.
+## Command coverage
 
-## Evidence
+| Commands or requirement | Status |
+| --- | --- |
+| Multipass start, info, run, stop, restart, suspend, delete | Implemented and regression-tested; Verified in the latest Mac log. |
+| Automatic naming, --name, persistent counter, list formats | Implemented and regression-tested; Verified in the latest Mac log. |
+| Config and provider selection/discovery | Repaired and covered by the script. |
+| ssh and login | Managed shells implemented; manual Mac checks pending. |
+| shelve and unshelve | Explicitly unsupported; Multipass suspension is not OpenStack shelving. |
+| Key/security-group inventories | Empty because those cloud registries are not exposed by Multipass. |
+| Key/security-group mutation, regions, account, Horizon | Cloud-specific operations outside the local provider capability set. |
+| ssh-config and interactive CLI mode | Further implementation/validation remains. |
+| Daemon reset | Excluded from disposable tests because it acts on the provider service. |
+| Other local providers and remote Libcloud providers | Not selected or live-tested in this contribution. |
+| Piazza discussion and peer review | Drafts prepared; posting and links are not confirmed. |
 
-- [Verification script](verify_vm.sh)
-- [Latest attempt](verification-retry.txt)
-- [Earlier verification](verification.txt)
-- [Successful launch](start-retry.txt)
-- [Tool fork](https://github.com/Sugwu123/cloudmesh-ai-vm)
+The verification script uses a temporary configuration and three unique test
+names. It launches test VMs sequentially, asserts native state and guest output,
+checks counter persistence, parses list formats, and compares the original
+inventory. Cleanup targets only those test names with delete --purge NAME.
+It does not use a global purge. Manual and unsupported features remain visible
+instead of being counted as full feature completeness.
 
-## Contribution links
+## Self-assessment and background
 
+The selected Multipass Mac verification is recorded above.
+Full command coverage is not claimed. Interactive behavior, the separate CMC
+integration, and other providers still need work or validation.
+
+The intermittent editable-install namespace error has not been diagnosed.
+A regular installation previously allowed verification to run. More background
+on Python namespace packages and setuptools editable installations is still
+needed to explain the difference.
+
+The instructor requests discussion on Piazza before implementing missing
+commands. A prior discussion link is not recorded, so compliance with that
+step is not claimed. The candidate changes and a concrete discussion draft
+are available for review. Individual peer participation remains part of this
+solo implementation's class contribution.
+
+## Evidence and contribution links
+
+- [Verification launcher](verify_vm.sh)
+- [Unit-test output](unit-tests.txt)
+- [Earlier Mac retry](verification-retry.txt)
+- [Earlier import-failure attempt](verification.txt)
+- [Successful original launch](start-retry.txt)
+- [Participation drafts and status](participation.md)
+- [Proposed PR description](pr-update.md)
 - [Code branch](https://github.com/Sugwu123/cloudmesh-ai-vm/tree/feature/week5-multipass)
-- [Updated Multipass guide](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/docs/providers/local/multipass.md)
+- [Multipass guide](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/docs/providers/local/multipass.md)
+- [Manual](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/docs/manual.md)
+- [Disposable verifier](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/tests/bin/verify_multipass_week5.sh)
 
-- [Upstream PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11)
-
-## Background still needed
-
-The intermittent editable-install namespace errors are still unexplained.
-Further background on Python namespace packages and setuptools editable
-installations is needed to diagnose that behavior.
+The new Mac log should be saved as verification-week5.txt beside this report.
 
 ## Connection to the Sports Project
 
 The [Sports Statistics and Probability Analysis Platform](../../project.md)
-needs a backend to ingest sports observations, store them, calculate statistics,
-and serve its dashboard. Week 5 supports the VM infrastructure needed to host
-those components. Dependency repairs, named-VM deletion, and command verification
-help make that infrastructure reproducible and safer to manage.
+uses a backend, SQLite storage, analytics, and a dashboard. VM lifecycle and
+guest-command repairs support reproducible hosting and administration of those
+components. They do not validate the sports model or replace application tests.
 
-The [sports prototype](../../sports/README.md) provides the application layer:
-SQLite storage, team/player/opponent filters, historical threshold rates,
-uncertainty intervals, a chronological baseline evaluation, a CLI, and a JSON API.
-Its dedicated VM deployment script uses native Multipass commands while the
-recorded cmx provider failures remain unresolved.
+The [sports prototype](../../sports/README.md) already has team/player/opponent
+filters, threshold rates, uncertainty intervals, a chronological baseline,
+a CLI, and a JSON API. Its deployment uses native Multipass commands on the
+separate sports-midterm VM. The Week 5 verifier does not operate on that VM.
+Adopting cmx in the sports deployment is a later integration step after live
+provider checks.
 
-The Week 5 result remains **8 passed and 3 failed**, including two native
-Multipass queries among the successful checks. Full command and naming coverage
-is still unverified. The disposable Week 5 VM was a tool-validation VM; it was
-not evidence of a deployed sports application or a validated sports prediction.
-
-This work was performed individually. See the [midterm progress report](../../project/project.md)
-for the application evidence and remaining project tasks.
+The sports application's 23 tests are separate from the Week 5 checks.
+See the [midterm progress report](../../project/project.md) for application
+evidence and remaining sports data, evaluation, and approval tasks.

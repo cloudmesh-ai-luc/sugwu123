@@ -1,0 +1,330 @@
+Disposable VM prefix: sugwu-week5-1790877498-34160
+Using temporary configuration; the normal clouds.yaml is not modified.
+
+Testing: CLI help
+Usage: cmx vm [OPTIONS] COMMAND [ARGS]...
+
+  VM management commands
+
+Options:
+  --cloud TEXT       Override the default cloud provider
+  --debug            Enable debug logging
+  --verbose          Print raw subprocess/SSH commands
+  -i, --interactive  Enter interactive mode
+  --help             Show this message and exit.
+
+Commands:
+  account         List account information and resource limits for the...
+  cloud           Manage VM cloud provider.
+  config          Manage VM CLI configuration.
+  delete          Deletes one or more VMs.
+  flavor          List available VM flavor.
+  horizon         Open the Horizon dashboard for the active cloud provider.
+  image           List available VM image.
+  info            Get detailed information about a specific VM.
+  key             Manage VM SSH keys.
+  list            List VM resources.
+  login           Log into a VM or get connection details.
+  provider        Manage VM cloud provider.
+  reset           Resets a VM or the provider service.
+  restart         Restarts one or more VMs.
+  run             Executes a command on a VM.
+  security-group  Manage VM security groups.
+  shelve          Shelve one or more VMs (OpenStack only).
+  ssh             Start an interactive SSH session with the VM.
+  ssh-config      Generate SSH config for the VM.
+  start           Starts or launches VMs.
+  stop            Stops one or more VMs.
+  suspend         Suspends one or more VMs.
+  unshelve        Unshelve one or more VMs (OpenStack only).
+PASS: CLI help
+
+Testing: Initialize existing config without overwriting it
+VM configuration initialized.
+PASS: Initialize existing config without overwriting it
+
+Testing: Config set integer
+Configured counter = 0.
+PASS: Config set integer
+
+Testing: Config get zero
+counter: 0
+PASS: Config get zero
+
+Testing: Config list
+                                VM Configuration                                
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Key           ┃ Value                                                        ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ clouds        │ {'multipass': {'cpus': 1, 'disk': '8G', 'enabled': True,     │
+│               │ 'image': '24.04', 'memory': '1G'}}                           │
+│ counter       │ 0                                                            │
+│ default_cloud │ multipass                                                    │
+│ username      │ sugwu-week5-1790877498-34160                                 │
+└───────────────┴──────────────────────────────────────────────────────────────┘
+PASS: Config list
+
+Testing: Provider set
+Default provider set to multipass.
+PASS: Provider set
+
+Testing: Provider get
+Current provider: multipass.
+PASS: Provider get
+
+Testing: Provider list
+                    Provider Support & Configuration Matrix                     
+┏━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┓
+┃    ┃ Provider        ┃ Enabled ┃ Lifecycle ┃ Remote Exec    ┃ Status         ┃
+┡━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━┩
+│    │ AWS             │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │                 │         │           │                │ (via Libcloud) │
+│    │ Azure           │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │                 │         │           │                │ (via Libcloud) │
+│    │ Chameleon Cloud │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │ Google          │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │                 │         │           │                │ (via Libcloud) │
+│    │ Jetstream       │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │ Lima            │   🔴    │    🟢     │ 🟢 (Agent)     │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│ ⭐ │ Multipass       │   🟢    │    🟢     │ 🟢 (Agent)     │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │ Openstack       │   🔴    │    🟢     │ 🟢 (SSH)       │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │ VirtualBox      │   🔴    │    🟢     │ 🟢 (GuestCtrl) │ Fully          │
+│    │                 │         │           │                │ Functional     │
+│    │ WSL2            │   🔴    │    🟢     │ 🟢 (Direct)    │ Fully          │
+│    │                 │         │           │                │ Functional     │
+└────┴─────────────────┴─────────┴───────────┴────────────────┴────────────────┘
+
+Default cloud provider: multipass
+Cloudmesh Config file path: ~/.config/cloudmesh/clouds.yaml
+Openstack Config file path: ~/.config/openstack/clouds.yaml
+PASS: Provider list
+
+Testing: Provider info
+ Provider Info: multipass  
+┏━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Key        ┃ Value      ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ multipass  │ 1.16.3+mac │
+│ multipassd │ 1.16.3+mac │
+│ Multipass  │ 1.16.4     │
+│ Fully      │ open       │
+│ Go         │ here       │
+└────────────┴────────────┘
+PASS: Provider info
+
+Testing: Images through multipass find
+         Images          
+┏━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Name        ┃ ID      ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ 22.04       │ Unknown │
+│ 24.04       │ Unknown │
+│ 26.04       │ Unknown │
+│ daily:26.10 │ Unknown │
+└─────────────┴─────────┘
+PASS: Images through multipass find
+
+Testing: Local resource profiles
+        Flavors         
+┏━━━━━━━━━┳━━━━━┳━━━━━━┓
+┃ Name    ┃ CPU ┃ RAM  ┃
+┡━━━━━━━━━╇━━━━━╇━━━━━━┩
+│ default │ 1   │ 1GiB │
+│ medium  │ 2   │ 2GiB │
+│ large   │ 4   │ 4GiB │
+└─────────┴─────┴──────┘
+PASS: Local resource profiles
+
+Testing: Key listing (no user-managed registry)
+No SSH keys found.
+PASS: Key listing (no user-managed registry)
+
+Testing: Security-group listing (no cloud resources)
+No security groups found.
+PASS: Security-group listing (no cloud resources)
+
+Testing: Start with --name
+[2K[0A[0E[2K[0A[0ECreating sugwu-week5-1790877498-34160-custom  /- [2K[0A[0E[2K[0A[0EConfiguring sugwu-week5-1790877498-34160-custom  / [2K[0A[0E[2K[0A[0EStarting sugwu-week5-1790877498-34160-custom  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- [2K[0A[0E[2K[0A[0EWaiting for initialization to complete  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- [2K[0A[0ELaunched: sugwu-week5-1790877498-34160-custom
+[2K[0A[0ESuccessfully started VM sugwu-week5-1790877498-34160-custom.
+PASS: Start with --name
+
+Testing: Explicit name does not increment counter
+Counter confirmed: 0
+PASS: Explicit name does not increment counter
+
+Testing: Running state after launch
+sugwu-week5-1790877498-34160-custom state confirmed: Running
+PASS: Running state after launch
+
+Testing: VM info
+
+Information for VM: sugwu-week5-1790877498-34160-custom
+------------------------------
+Cpu Count: 1
+Disks: {'sda1': {'total': '8238844928', 'used': '2171034112'}}
+Image Hash: 1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55
+Image Release: 24.04 LTS
+Ipv4: ['192.168.252.7']
+Load: [0.76, 0.2, 0.07]
+Memory: {'total': 998174720, 'used': 238264320}
+Mounts: {}
+Release: Ubuntu 24.04.5 LTS
+Snapshot Count: 0
+State: Running
+Name: sugwu-week5-1790877498-34160-custom
+Status: Running
+Ip: 192.168.252.7
+Image: Ubuntu 24.04.5 LTS
+------------------------------
+PASS: VM info
+
+Testing: Guest hostname
+Guest hostname confirmed: sugwu-week5-1790877498-34160-custom
+PASS: Guest hostname
+
+Testing: Successful command with no output
+PASS: Successful command with no output
+
+Testing: Failed guest command returns nonzero
+Unexpected Error: Command '['multipass', 'exec', 
+'sugwu-week5-1790877498-34160-custom', '--', 'sh', '-lc', 'false']' returned 
+non-zero exit status 1.
+Aborted!
+Nonzero guest exit was propagated
+PASS: Failed guest command returns nonzero
+
+Testing: List format table
+Table contains the test VM
+PASS: List format table
+
+Testing: List format json
+json parsed and contains the running test VM
+PASS: List format json
+
+Testing: List format yaml
+yaml parsed and contains the running test VM
+PASS: List format yaml
+
+Testing: List format csv
+csv parsed and contains the running test VM
+PASS: List format csv
+
+Testing: Restart running VM
+[2K[0A[0ERestarting sugwu-week5-1790877498-34160-custom  /-\| [2K[0A[0E[2K[0A[0ESuccessfully restarted VM sugwu-week5-1790877498-34160-custom.
+PASS: Restart running VM
+
+Testing: Running state after restart
+sugwu-week5-1790877498-34160-custom state confirmed: Running
+PASS: Running state after restart
+
+Testing: Stop VM
+[2K[0A[0EStopping sugwu-week5-1790877498-34160-custom  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ [2K[0A[0ESuccessfully stopped VM sugwu-week5-1790877498-34160-custom.
+PASS: Stop VM
+
+Testing: Stopped state
+sugwu-week5-1790877498-34160-custom state confirmed: Stopped
+PASS: Stopped state
+
+Testing: Start existing VM
+[2K[0A[0EStarting sugwu-week5-1790877498-34160-custom  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ [2K[0A[0E[2K[0A[0ESuccessfully started VM sugwu-week5-1790877498-34160-custom.
+PASS: Start existing VM
+
+Testing: Running state after start
+sugwu-week5-1790877498-34160-custom state confirmed: Running
+PASS: Running state after start
+
+Testing: Suspend VM
+[2K[0A[0ESuspending sugwu-week5-1790877498-34160-custom  /-\|/-\|/- [2K[0A[0ESuccessfully suspended VM sugwu-week5-1790877498-34160-custom.
+PASS: Suspend VM
+
+Testing: Suspended state
+sugwu-week5-1790877498-34160-custom state confirmed: Suspended
+PASS: Suspended state
+
+Testing: Resume suspended VM
+[2K[0A[0EStarting sugwu-week5-1790877498-34160-custom  /-\|/-\| [2K[0A[0E[2K[0A[0ESuccessfully started VM sugwu-week5-1790877498-34160-custom.
+PASS: Resume suspended VM
+
+Testing: Running state after resume
+sugwu-week5-1790877498-34160-custom state confirmed: Running
+PASS: Running state after resume
+
+Testing: Explicit start and resume keep counter unchanged
+Counter confirmed: 0
+PASS: Explicit start and resume keep counter unchanged
+
+Testing: Shelve reports unsupported
+PASS: Shelve reports unsupported
+
+Testing: Unshelve reports unsupported
+PASS: Unshelve reports unsupported
+
+Testing: Delete dedicated VM
+Successfully deleted VM sugwu-week5-1790877498-34160-custom.
+PASS: Delete dedicated VM
+
+Testing: Dedicated VM absent after delete
+Deletion confirmed: sugwu-week5-1790877498-34160-custom
+PASS: Dedicated VM absent after delete
+
+Testing: Automatic naming sequence 1
+Starting 1 VMs (sugwu-week5-1790877498-34160-1)
+[2K[0A[0E[2K[0A[0ECreating sugwu-week5-1790877498-34160-1  / [2K[0A[0E[2K[0A[0EConfiguring sugwu-week5-1790877498-34160-1  / [2K[0A[0E[2K[0A[0EStarting sugwu-week5-1790877498-34160-1  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/ [2K[0A[0E[2K[0A[0EWaiting for initialization to complete  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- [2K[0A[0ELaunched: sugwu-week5-1790877498-34160-1
+[2K[0A[0ESuccessfully started VM sugwu-week5-1790877498-34160-1.
+PASS: Automatic naming sequence 1
+
+Testing: Persisted counter 1
+Counter confirmed: 1
+PASS: Persisted counter 1
+
+Testing: Generated VM sugwu-week5-1790877498-34160-1 is running
+sugwu-week5-1790877498-34160-1 state confirmed: Running
+PASS: Generated VM sugwu-week5-1790877498-34160-1 is running
+
+Testing: Delete generated VM sugwu-week5-1790877498-34160-1
+Successfully deleted VM sugwu-week5-1790877498-34160-1.
+PASS: Delete generated VM sugwu-week5-1790877498-34160-1
+
+Testing: Generated VM absent
+Deletion confirmed: sugwu-week5-1790877498-34160-1
+PASS: Generated VM absent
+
+Testing: Automatic naming sequence 2
+Starting 1 VMs (sugwu-week5-1790877498-34160-2)
+[2K[0A[0E[2K[0A[0ECreating sugwu-week5-1790877498-34160-2  / [2K[0A[0E[2K[0A[0EConfiguring sugwu-week5-1790877498-34160-2  / [2K[0A[0E[2K[0A[0EStarting sugwu-week5-1790877498-34160-2  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\ [2K[0A[0E[2K[0A[0EWaiting for initialization to complete  /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/- [2K[0A[0ELaunched: sugwu-week5-1790877498-34160-2
+[2K[0A[0ESuccessfully started VM sugwu-week5-1790877498-34160-2.
+PASS: Automatic naming sequence 2
+
+Testing: Persisted counter 2
+Counter confirmed: 2
+PASS: Persisted counter 2
+
+Testing: Generated VM sugwu-week5-1790877498-34160-2 is running
+sugwu-week5-1790877498-34160-2 state confirmed: Running
+PASS: Generated VM sugwu-week5-1790877498-34160-2 is running
+
+Testing: Delete generated VM sugwu-week5-1790877498-34160-2
+Successfully deleted VM sugwu-week5-1790877498-34160-2.
+PASS: Delete generated VM sugwu-week5-1790877498-34160-2
+
+Testing: Generated VM absent
+Deletion confirmed: sugwu-week5-1790877498-34160-2
+PASS: Generated VM absent
+
+Testing: Other VM inventory and states preserved
+Original VM names and states preserved
+PASS: Other VM inventory and states preserved
+
+MANUAL: cmx vm ssh NAME and cmx vm login NAME, then type exit.
+SKIP: daemon reset, interactive CLI, account/Horizon/regions, SSH config, key mutation, security-group mutation.
+These skips and unsupported shelve/unshelve are not evidence of feature completeness.
+
+Results: 50 passed, 0 failed
