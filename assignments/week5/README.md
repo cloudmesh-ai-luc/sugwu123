@@ -32,6 +32,7 @@ a disposable verification script. Live verification is recorded below.
 | Updated unit checks | 117 passed | Python 3.12; mocked provider calls and simulated CLI processes. |
 | Shell verifier regression cases | 4 passed, included in the 117 | Success, preflight failure, suspend failure, and launch failure. |
 | Latest Mac run | 50 passed, 0 failed | [Actual host log](verification-week5.txt); selected scope verified. |
+| Manual Mac shell checks | ssh and login passed | Separate guest sessions; hostname, username, and exit verified in the screenshots below. |
 
 The updated checks ran with:
 
@@ -58,9 +59,33 @@ Actual script summary: **50 passed, 0 failed**.
 The required lifecycle, naming, list-format, and inventory-preservation checks passed.
 This confirms the script's selected Multipass scope, including expected-error checks.
 
-Interactive shells, daemon reset, CMC integration, remaining CLI gaps,
+Interactive CLI mode, daemon reset, CMC integration, remaining CLI gaps,
 other providers, and class participation are still separate tasks.
 Unsupported shelving checks are not successful shelving operations.
+
+## Manual shell verification
+
+On October 1, I checked both `cmx vm --cloud multipass ssh` and
+`cmx vm --cloud multipass login` using the dedicated test VM
+`sugwu-week5-shell-1790881861`. In each guest session, `hostname` returned that
+VM name, `whoami` returned `ubuntu`, and `exit` returned to my Mac prompt.
+
+- [SSH check screenshot](images/ssh.png), captured at 2:12 pm.
+- [Login check screenshot](images/login.png), captured at 2:20 pm.
+- [Targeted cleanup screenshot](images/cleanup.png), captured at 2:28 pm.
+
+I then ran `cmx vm --cloud multipass delete sugwu-week5-shell-1790881861`.
+It reported successful deletion, and native `multipass list` no longer showed
+the test VM. The inventory still listed `sports-midterm`, `week2-vm`, and
+`week4-local` as running, and `balmy-bedbug` as stopped.
+
+The guest sessions and deletion output were recorded on my Mac in
+[manual-shell-checks.txt](manual-shell-checks.txt). The screenshots also retain
+the shell and cleanup results.
+These are two manual checks in addition to the 50 automated Mac checks; they
+do not change the automated summary to 52. They do not exercise interactive
+CLI mode or `ssh-config`.
+
 ## Code understanding
 
 Click loads command modules and passes the selected provider and arguments.
@@ -82,7 +107,7 @@ rather than claiming that those existing components were newly created.
 | Multipass start, info, run, stop, restart, suspend, delete | Implemented and regression-tested; Verified in the latest Mac log. |
 | Automatic naming, --name, persistent counter, list formats | Implemented and regression-tested; Verified in the latest Mac log. |
 | Config and provider selection/discovery | Repaired and covered by the script. |
-| ssh and login | Managed shells implemented; manual Mac checks pending. |
+| ssh and login | Managed shells implemented; both manual Mac checks passed with guest identity and exit verified. |
 | shelve and unshelve | Explicitly unsupported; Multipass suspension is not OpenStack shelving. |
 | Key/security-group inventories | Empty because those cloud registries are not exposed by Multipass. |
 | Key/security-group mutation, regions, account, Horizon | Cloud-specific operations outside the local provider capability set. |
@@ -101,7 +126,7 @@ instead of being counted as full feature completeness.
 ## Self-assessment and background
 
 The selected Multipass Mac verification is recorded above.
-Full command coverage is not claimed. Interactive behavior, the separate CMC
+Full command coverage is not claimed. Interactive CLI mode, the separate CMC
 integration, and other providers still need work or validation.
 
 The intermittent editable-install namespace error has not been diagnosed.
@@ -129,7 +154,7 @@ solo implementation's class contribution.
 - [Manual](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/docs/manual.md)
 - [Disposable verifier](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/tests/bin/verify_multipass_week5.sh)
 
-The new Mac log should be saved as verification-week5.txt beside this report.
+The latest automated Mac log is retained as verification-week5.txt beside this report.
 
 ## Connection to the Sports Project
 

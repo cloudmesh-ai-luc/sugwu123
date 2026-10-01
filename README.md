@@ -24,6 +24,7 @@ dashboard and stop/start verification, and instructor approval remain to be reco
 - [x] Prepare repairs and create a verification script.
 - [x] Prepare tested info/run/lifecycle repairs, naming checks, and list formats.
 - [x] Verify Multipass lifecycle, naming, and list formats on Mac.
+- [x] Manually verify `cmx vm ssh` and `cmx vm login` on Mac.
 - [x] Record progress and unfinished work.
 - [x] Update Multipass provider documentation.
 - [ ] Fully validate all commands and naming behavior.

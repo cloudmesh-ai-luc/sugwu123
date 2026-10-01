@@ -1,7 +1,8 @@
 # Individual Week 5 Participation
 Sydel Ugwu
 
-These are drafts and review notes. No Piazza post or GitHub review was sent.
+These are drafts and review notes. Submission of a Piazza post or GitHub
+peer comment/review is not confirmed.
 Add the actual links and dates after completing those actions. If a prior
 Piazza discussion already exists, record that link rather than claiming it
 has not happened.
@@ -24,19 +25,25 @@ Subject: Week 5 Multipass improvements for my solo sports project
 
 I am working individually on the Multipass provider to support my Sports
 Statistics and Probability Analysis Platform. My earlier Mac verification
-recorded 8 passes and 3 failures: info and run are unsupported, and start tries
-to launch an existing VM.
+recorded 8 passes and 3 failures: info and run were not implemented, and start
+tried to launch an existing VM.
 
-I have prepared a candidate that adds VM information and guest execution,
+My contribution adds VM information and guest execution,
 resumes existing instances, supports --name without changing the counter, and
-exports VM lists as JSON, YAML, CSV, or tables. The candidate has regression
-tests; the new real Mac run is still pending.
+exports VM lists as JSON, YAML, CSV, or tables. The updated unit checks passed
+117 tests, excluding the separate CMC integration. The real Mac verification
+recorded 50 passed and 0 failed for the selected Multipass scope. I also checked
+ssh and login manually; both returned the expected hostname and ubuntu user,
+and exited back to my Mac. Those two checks are separate from the 50-check log.
 
-For shelve/unshelve, my proposal is to report that Multipass does not support
-OpenStack shelving and document suspend/start separately. I would appreciate
+For shelve/unshelve, the provider reports that Multipass does not support
+OpenStack shelving and documents suspend/start separately. I would appreciate
 feedback on that behavior and any overlap with other students' provider work.
 My existing contribution is PR #11:
 https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11
+
+Report and verification evidence:
+https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week5/README.md
 
 ## Peer review notes
 

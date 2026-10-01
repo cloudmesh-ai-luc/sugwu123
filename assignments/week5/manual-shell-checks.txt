@@ -1,0 +1,103 @@
+
+SSH check: sugwu-week5-shell-1790881861
+Welcome to Ubuntu 24.04.5 LTS (GNU/Linux 6.8.0-142-generic aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Oct  1 14:11:19 CDT 2026
+
+  System load:             0.0
+  Usage of /:              19.7% of 8.65GB
+  Memory usage:            12%
+  Swap usage:              0%
+  Processes:               126
+  Users logged in:         0
+  IPv4 address for enp0s1: 192.168.252.10
+  IPv6 address for enp0s1: fd5f:10d6:6a77:2520:5054:ff:fe41:77c6
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+22 updates can be applied immediately.
+10 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+[?2004h]0;ubuntu@sugwu-week5-shell-1790881861: ~[01;32mubuntu@sugwu-week5-shell-1790881861[00m:[01;34m~[00m$ [7mhostname[27m
+
+[7mwhoami[27m
+
+[7mexit[27m[A[A
+]0;ubuntu@sugwu-week5-shell-1790881861: ~[01;32mubuntu@sugwu-week5-shell-1790881861[00m:[01;34m~[00m$ hostname
+
+whoami
+
+exit
+[?2004l
+sugwu-week5-shell-1790881861
+ubuntu
+logout
+
+LOGIN check: sugwu-week5-shell-1790881861
+Welcome to Ubuntu 24.04.5 LTS (GNU/Linux 6.8.0-142-generic aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Oct  1 14:19:45 CDT 2026
+
+  System load:             0.01
+  Usage of /:              22.6% of 8.65GB
+  Memory usage:            9%
+  Swap usage:              0%
+  Processes:               102
+  Users logged in:         0
+  IPv4 address for enp0s1: 192.168.252.10
+  IPv6 address for enp0s1: fd5f:10d6:6a77:2520:5054:ff:fe41:77c6
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+22 updates can be applied immediately.
+10 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '26.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Thu Oct  1 14:11:33 2026 from 192.168.252.1
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+[?2004h]0;ubuntu@sugwu-week5-shell-1790881861: ~[01;32mubuntu@sugwu-week5-shell-1790881861[00m:[01;34m~[00m$ [7mhostname[27m
+
+[7mwhoami[27m
+
+[7mexit[27m[A[A
+]0;ubuntu@sugwu-week5-shell-1790881861: ~[01;32mubuntu@sugwu-week5-shell-1790881861[00m:[01;34m~[00m$ hostname
+
+whoami
+
+exit
+[?2004l
+sugwu-week5-shell-1790881861
+ubuntu
+logout
+Successfully deleted VM sugwu-week5-shell-1790881861.

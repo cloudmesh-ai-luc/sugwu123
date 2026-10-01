@@ -16,12 +16,21 @@ The provider guide and manual describe supported and unsupported capabilities.
 Validation: 117 unit checks passed with tests/unit/test_vm.py excluded because
 it imports the separate cloudmesh.ai.cmc package. These checks include four
 simulated end-to-end verifier scenarios. They are not real VM evidence.
-The earlier Mac log was 8 passed and 3 failed.
-Live Mac verification: 50 passed, 0 failed; selected scope verified.
+Live Mac verification recorded 50 passed and 0 failed for the selected scope.
+The earlier 8-pass, 3-failure log is retained as historical evidence.
+Separate manual ssh and login checks both verified the dedicated guest's
+hostname, the ubuntu user, and a clean exit to the Mac prompt.
+The manual test VM was then deleted by name. Native inventory confirmed its
+absence and still listed the four existing VMs, including the running sports VM.
 
 The disposable verifier creates three unique test VMs sequentially, isolates
 configuration, asserts states/output/counters, and preserves other VM inventory.
-Shelve/unshelve remain unsupported, and interactive shells, daemon reset,
-CMC integration, and other providers require separate validation.
+Shelve/unshelve remain unsupported. Interactive CLI mode, ssh-config, daemon
+reset, CMC integration, and other providers require separate work or validation.
 
-Replace the pending Mac line with the actual new result after retaining the log.
+Evidence:
+
+- [Latest Mac verification](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week5/verification-week5.txt)
+- [Unit-test output](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week5/unit-tests.txt)
+- [Manual SSH and login results](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week5/README.md#manual-shell-verification)
+- [Disposable verifier](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/tests/bin/verify_multipass_week5.sh)
