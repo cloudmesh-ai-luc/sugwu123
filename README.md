@@ -7,8 +7,10 @@ Sydel Ugwu
 - [x] Fork, configure, and launch a test VM.
 - [x] Prepare repairs and create a verification script.
 - [x] Record progress and unfinished work.
+- [x] Update Multipass provider documentation.
 - [ ] Fully validate all commands and naming behavior.
-- [ ] Complete upstream PR and class collaboration.
+- [x] Open upstream [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
+- [ ] Complete Piazza coordination, teamwork, and peer review.
 
 [Week 5 report](assignments/week5/README.md)
 

@@ -31,3 +31,11 @@ Full command coverage and naming-counter behavior remain unverified. Import beha
 
 - [Code branch](https://github.com/Sugwu123/cloudmesh-ai-vm/tree/feature/week5-multipass)
 - [Updated Multipass guide](https://github.com/Sugwu123/cloudmesh-ai-vm/blob/feature/week5-multipass/docs/providers/local/multipass.md)
+
+- [Upstream PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11)
+
+## Background still needed
+
+The intermittent editable-install namespace errors are still unexplained.
+Further background on Python namespace packages and setuptools editable
+installations is needed to diagnose that behavior.
