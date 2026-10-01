@@ -10,7 +10,7 @@ Sydel Ugwu
 - [x] Update Multipass provider documentation.
 - [ ] Fully validate all commands and naming behavior.
 - [x] Open upstream [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
-- [ ] Complete Piazza coordination, teamwork, and peer review.
+- [ ] Complete individual Piazza participation and peer review.
 
 [Week 5 report](assignments/week5/README.md)
 
