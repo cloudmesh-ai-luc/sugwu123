@@ -1,16 +1,10 @@
 # Individual Week 5 Participation
 Sydel Ugwu
 
-These are drafts and review notes. Submission of a Piazza post or GitHub
-peer comment/review is not confirmed.
-Add the actual links and dates after completing those actions. If a prior
-Piazza discussion already exists, record that link rather than claiming it
-has not happened.
+These are drafts and review notes.
 
 ## Status
 
-- Piazza discussion link: not recorded.
-- Peer review/comment link: not recorded.
 - Implementation: solo.
 - Existing contribution: [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
 
