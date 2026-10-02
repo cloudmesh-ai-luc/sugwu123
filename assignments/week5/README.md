@@ -140,6 +140,11 @@ step is not claimed. The candidate changes and a concrete discussion draft
 are available for review. Individual peer participation remains part of this
 solo implementation's class contribution.
 
+At the October 1 check, my PR #11 was the only open upstream PR. A posted
+peer review remains unfinished in this submission. Earlier merged
+contributions, including PR #3, are still available for review; the source
+notes in participation.md are retained separately from submitted feedback.
+
 ## Evidence and contribution links
 
 - [Verification launcher](verify_vm.sh)

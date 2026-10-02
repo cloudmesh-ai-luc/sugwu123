@@ -8,6 +8,15 @@ These are drafts and review notes.
 - Implementation: solo.
 - Existing contribution: [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
 
+## Peer-review status at submission
+
+At the October 1 check, my PR #11 was the only open PR in the upstream
+repository. I have not completed a posted peer review, so this remains an
+unfinished task in my self-assessment. Earlier contributions, including
+[PR #3](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/3), were already
+merged and remain available to read and comment on. The review notes below
+are retained, but they do not establish that feedback was submitted.
+
 The assignment says: "Before implementation discuss on Piazza."
 A local candidate has been prepared. Posting now does not establish that
 discussion happened before it was prepared; the self-assessment records this
