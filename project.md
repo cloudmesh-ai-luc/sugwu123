@@ -28,11 +28,11 @@ The importer downloads a fixed source version and checks its SHA-256 checksum be
 
 ```mermaid
 flowchart TD
-    D["Historical NBA data or fictional demo"] --> S["Validation and SQLite"]
-    S --> A["Statistics and model comparison"]
-    A --> C["CLI and JSON API"]
+    D["NBA / demo data"] --> S["SQLite checks"]
+    S --> A["Stats / model"]
+    A --> C["CLI / JSON API"]
     C --> W["Dashboard"]
-    V["VM setup and cmx commands"] --> C
+    V["VM / cmx"] --> C
 ```
 
 The terminal and dashboard use the same analysis code. The dashboard gives users a way to explore the results visually, while the CLI and API allow the same analysis to run without it.
