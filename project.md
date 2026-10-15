@@ -161,7 +161,7 @@ The application uses no paid sports-data service or hosted LLM API. Multipass us
 
 The Ohio t3.micro launch screen showed a compute rate of $0.0104 per hour. Fifteen minutes at that rate is $0.0026 before disk, public IP, transfer, and other charges. Actual charges have not been checked. [The cost appendix](project/costs.md) covers these limits and free or open alternatives.
 
-OpenAI Codex helped substantially with code, tests, source research, running the experiment, and drafting the report and slides. The sports topic existed before that help. The exact model name was not shown in the session. Sydel is responsible for reviewing the work and explaining the results and limitations. [The AI-use document](project/ai-usage.md) gives more detail about the assistance and checks.
+OpenAI was used in the process of formatting the NBA stats. The exact model name was not shown in the session. Sydel is responsible for reviewing the work and explaining the results and limitations. [The AI-use document](project/ai-usage.md) gives more detail about the assistance and checks.
 
 ## References
 
