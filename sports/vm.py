@@ -76,7 +76,7 @@ def archive_source(target, root=None):
             relative = path.relative_to(root)
             if path.is_symlink() or "data" in relative.parts or "__pycache__" in relative.parts:
                 continue
-            if path.is_file() and (path.suffix in {".py", ".html", ".js", ".css", ".md"}
+            if path.is_file() and (path.suffix in {".py", ".html", ".js", ".css", ".md", ".sh"}
                                    or path.name == "Makefile"):
                 archive.add(path, arcname=str(Path("sports") / relative))
 
