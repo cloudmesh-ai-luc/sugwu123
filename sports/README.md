@@ -1,149 +1,107 @@
-# Sports Prototype
+# Sports Application
 
-This implements the first application milestone of the
-[Sports Statistics and Probability Analysis Platform](../project.md).
-It uses Python's standard library, SQLite, a JSON API, and a web dashboard.
-Python 3.12 or newer is required. No pip installation is needed.
+The [solo sports project](../project.md) uses Python's standard library, SQLite, a JSON API, and a dashboard. Python 3.12+ is required; the application needs no pip packages or paid API. The current historical dataset has **team totals**. Real player statistics are not supplied.
 
-## Run Locally
+## Real-Data Midterm Demo
 
-From the course repository root:
+From the repository root:
 
 ```bash
 make -C sports test
+make -C sports history
+make -C sports model
+make -C sports historical-serve
+```
+
+Open <http://127.0.0.1:8000>. Stop with Control-C. The importer downloads approximately 18 MB of pinned FiveThirtyEight data, verifies its SHA-256, and selects the NBA 2014–15 regular season: 2,460 team-game rows, 1,230 games, 30 teams. It keeps both teams' views and marks each aggregate explicitly. Data is CC BY 4.0, attributed to FiveThirtyEight, with original game information attributed there to Basketball-Reference. [Source description](https://github.com/fivethirtyeight/data/tree/master/nba-elo) · [License](https://github.com/fivethirtyeight/data#license).
+
+The source revision and checksum are constants in `history.py`. Raw CSV and SQLite files remain in ignored `sports/data/`. The separate database is `sports/data/history.sqlite3`. Skip `history` after a successful import; it refuses to overwrite existing observations. Only use `python3 -m sports.history --season 2015 --replace` after explicitly deciding to replace that historical dataset.
+
+```bash
+python3 -m sports --db sports/data/history.sqlite3 options
+python3 -m sports --db sports/data/history.sqlite3 analyze --team CHI --threshold 100.5
+python3 -m sports --db sports/data/history.sqlite3 model --team CHI --threshold 100.5
+curl --fail http://127.0.0.1:8000/api/health
+curl --fail --get http://127.0.0.1:8000/api/model \
+  --data-urlencode "team=CHI" --data-urlencode "threshold=100.5"
+```
+
+The server must be started with the historical database to produce these results. Expect 82 Chicago games, 43 strictly above 100.5 points, and 72 matched model-evaluation games. Exact results and provenance appear in [aggregate evidence](../project/evidence/nba2015-summary.json).
+
+## Synthetic Player Demo
+
+The original demonstration remains available in a separate database:
+
+```bash
 make -C sports demo
+make -C sports analyze
 make -C sports serve
 ```
 
-Open <http://127.0.0.1:8000>. Stop the server with Control-C.
-The demo generator creates 144 fictional player observations across 36 games,
-four teams, and eight players. They are not real sports statistics.
-Generated records are stored in `sports/data/sports.sqlite3`, excluded from Git.
-The demo command refuses to replace existing observations unless `--replace`
-is explicitly supplied. On later runs, skip `demo` if the dataset already exists.
+It creates 144 fictional player observations across 36 games, four teams, and eight players. It uses `sports/data/sports.sqlite3`; it does not establish real sports accuracy. Skip `demo` if the database already exists. Replacement requires an explicit `--replace`. Do not run both servers on the same port simultaneously.
 
-## Command-Line and API Access
+## CLI, API, and Custom Imports
 
-The dashboard calls the same analysis exposed through the CLI. Its purpose is
-to make the game trend and uncertainty easier to inspect; core operations
-require no GUI. Import and dataset creation are CLI operations.
+The CLI supports `options`, `analyze`, `model`, `import`, `demo`, and `serve`. `GET /api/options` returns filters/provenance; `/api/analyze` and `/api/model` accept `team`, optional `player`/`opponent`, and `threshold`. Unknown filters and invalid thresholds return HTTP 400. Without a player filter, each team game counts once. The historical dashboard hides aggregate markers from the player selector.
 
-```bash
-python3 -m sports options
-python3 -m sports analyze --team "Lake City Lynx" --player "Morgan Lee" --threshold 20.5
-python3 -m sports analyze --team "Lake City Lynx" --opponent "River Town Rockets" --threshold 100.5
-curl --fail http://127.0.0.1:8000/api/health
-curl --fail --get http://127.0.0.1:8000/api/analyze \
-  --data-urlencode "team=Lake City Lynx" \
-  --data-urlencode "player=Morgan Lee" \
-  --data-urlencode "threshold=20.5"
-```
-
-`GET /api/options` supplies the available teams, players, opponents, and source
-metadata. `GET /api/analyze` accepts `team`, optional `player` and `opponent`,
-and `threshold`. Unknown filters or nonfinite thresholds return HTTP 400.
-Without a player filter, the metric is team points and each game counts once.
-With a player filter, only games where that player has a recorded observation
-are included. Opponent filters narrow the sample further.
-
-## Import Historical Data
-
-Select a public-domain dataset or obtain explicit usage rights first.
-Prepare a local CSV with exactly these columns:
+For another dataset, obtain explicit usage rights first and prepare these CSV columns:
 
 ```text
 game_id,date,team,opponent,player,points,team_score,opponent_score
 ```
 
-Use a consistent game ID for both sides, dates as `YYYY-MM-DD`, nonnegative
-integer scores, and a stable player identifier/name. Duplicate players within
-a game and conflicting scorelines are rejected. The CSV may contain selected
-players rather than a full roster, but their combined points cannot exceed
-their team's score. DNP/missing records are not imputed as zero.
-
-Run this with the actual source URL and license/permission statement:
+Dates use `YYYY-MM-DD`, scores are nonnegative integers, game IDs are consistent for both sides, and player identifiers must be unique within a game. Conflicting scores and duplicate observations are rejected. Missing player records are not treated as zero. Example syntax, with the placeholder values replaced by a real source and rights statement:
 
 ```bash
-python3 -m sports import /absolute/path/to/history.csv \
-  --source "https://actual-dataset-source.example/path" \
-  --rights "Actual license or explicit permission" --replace
+python3 -m sports --db sports/data/custom.sqlite3 import /absolute/path/to/history.csv \
+  --source "https://actual-source.example/data" --rights "Actual license or permission"
 ```
 
-The URL above is a placeholder, not a supplied dataset. A rights statement is
-recorded provenance, not an automatic license check. The importer validates the
-full dataset before replacing prior observations. Raw CSVs and generated databases
-must stay outside Git. No sports API downloader has been implemented yet.
+A supplied rights string records provenance; it does not automatically establish permission. Imports validate before replacement, and existing observations require an explicit `--replace`.
 
-## Probability and Evaluation
+## Probability and Model Evaluation
 
-For a selected sample, the event is **points strictly greater than the threshold**.
-The historical rate is the number of events divided by the number of selected
-games. A 95% Wilson interval describes uncertainty in that rate.[^wilson]
-The independence and comparable-game assumptions may fail in real sports data.
+The event is `points > threshold`. The historical rate uses selected games; the 95% Wilson interval describes uncertainty under binomial assumptions, which sports dependence and selection can violate. The original historical-only evaluation begins after five earlier games, with probability `(prior_events + 1) / (prior_games + 2)`.
 
-The evaluation forecasts each date using only earlier dates. After five prior
-games, the baseline probability is `(prior_events + 1) / (prior_games + 2)`.
-Same-day outcomes are excluded from each other's history. The Brier score is
-the mean squared error between the estimated probability and the binary outcome;
-the constant 50% comparison has a score of 0.25. Thresholds and filters are user
-choices, not tuned on the evaluated outcomes. Repeated selection after viewing
-scores can still introduce selection bias.
+The model comparison uses online logistic regression: intercept, prior five-game mean, and prior game points, with fixed 20-point scaling relative to the threshold. Learning rate is 0.05. It trains after five prior games and scores after ten. Prediction occurs before the date's update; same-day outcomes cannot leak into their forecasts. **Use the matched model comparison**, not the older five-game-warmup panel, to compare methods.
 
-Fictional-data results establish software behavior, not real forecasting skill.
-Real-data evaluation and uncertainty discussion remain project tasks.
+On the same 72 Chicago evaluation games, Brier scores are logistic **0.2533**, historical rate **0.2572**, constant 50% **0.2500**. Lower is better. The classifier does not beat the constant forecast here. Filtering, threshold selection after viewing results, one season, and a single team limit generalization. No held-out multi-season advantage is claimed.
 
-## Deploy to a Dedicated Local VM
+## Dedicated Multipass VM
 
-Prerequisites on the Mac: Python 3.12+, a working Multipass installation, enough
-resources for a 2-CPU/2-GB/10-GB VM, and internet access for the Ubuntu image and
-any missing Python packages. From the repository root:
+On a Mac with Multipass and enough resources for Ubuntu 24.04, 2 CPUs, 2 GiB RAM, and 10 GB disk:
 
 ```bash
 make -C sports vm-deploy
-```
-
-The script launches or resumes `sports-midterm` on Ubuntu 24.04, transfers only
-source files, runs the tests in the guest, seeds fictional data on a fresh
-deployment, configures a systemd service, checks its local health endpoint,
-and prints the dashboard URL. The service listens on port 8000 inside the local
-VM. It is a course demonstration server, intended for the local VM network.
-Existing database content is preserved during redeployment.
-
-```bash
 make -C sports vm-status
 make -C sports vm-stop
 make -C sports vm-start
 ```
 
-Set `NAME=sports-another-demo` to use another dedicated project VM. The script
-requires a `sports-` name. It does not operate on the Week 2 or Week 4 VM names.
-If the project VM is no longer needed, this explicit command deletes its disk:
+The existing automation transfers source, runs guest tests, preserves an existing default database, seeds synthetic data on a fresh deployment, and enables systemd on port 8000. **It still serves the synthetic/default database.** It does not automatically import the new historical source or switch the service to `history.sqlite3`. Do not describe a source redeployment alone as historical-model deployment.
+
+`NAME=sports-another-demo` selects another dedicated project VM. Only `sports-` names are accepted. Original [October 1 evidence](../project/vm-deployment.md) shows 23 guest tests then, deployment, stop/start, and 144 synthetic rows after recovery. It is separate from today's 34-test preparation result. Current Mac/VM verification remains to be performed.
+
+## Three-Cloud cmx Adapter
 
 ```bash
-python3 -m sports.vm delete --name sports-midterm --confirm-name sports-midterm
+python3 -m sports.cloud plan --cloud multipass
+python3 -m sports.cloud plan --cloud chameleon
+python3 -m sports.cloud plan --cloud google
 ```
 
-The helper uses `multipass delete --purge NAME`, scoped to the named instance.[^multipass]
-The automated deployment was **verified on the Mac on October 1, 2026**:
-`sports-midterm` was running on Ubuntu 24.04, all 23 guest tests passed, and the
-service returned `status: ok` with 144 generated observations. See the
-[deployment evidence](../project/vm-deployment.md). Dashboard access from the Mac
-and database persistence after stop/start still require verification.
-The project's native Multipass automation does not resolve the separate
-Week 5 cmx failures.
+Plans do not execute commands. Targets are Multipass, Chameleon KVM@TACC, and Google Compute Engine; cmx's provider key is `google`. Use the instructor's current dev2 and applicable Chameleon feature work. The audited start syntax creates a VM and is not an existing-VM resume operation.
 
-## Verification and Status
+Once source and the historical database really exist in `~/sports-project` on a configured target:
 
-The 23 automated tests cover known statistical values, counting one team game
-once, chronological leakage, CSV/provenance persistence, rejected imports,
-CLI/API agreement, API validation, archive exclusions, and deletion safeguards.
-See [verification output](../project/verification.txt).
+```bash
+python3 -m sports.cloud smoke --cloud google --name sports-google
+```
 
-Remaining milestones: permitted historical data, real-data evaluation,
-dashboard and persistence verification, instructor approval confirmation,
-and a midterm demo.
-AI explanations and a remote-cloud deployment are optional future extensions
-and are not implemented.
+This runs a guest analysis via `cmx vm run` and requires a valid success JSON payload with positive row/evaluation counts. A plain error string cannot pass. The adapter does not provision or install remote applications. Live cmx results, remote deployments, credentials, billing, and passphrase-protected keys remain unverified. [Current status](../project.md) and [checklist](../project/midterm-checklist.md) describe the outstanding work.
 
-[^wilson]: NIST, [Confidence intervals for proportions](https://itl.nist.gov/div898/handbook/prc/section2/prc241.htm).
-[^multipass]: Canonical, [Multipass command reference](https://canonical.com/multipass/docs/latest/reference/command-line-interface/) and [targeted deletion](https://canonical.com/multipass/docs/latest/reference/command-line-interface/delete/).
+## Verification and Acknowledgment
+
+The current 34-test suite includes storage/statistics, leakage, importer fixtures, real HTTP CLI/API consistency, deployment safeguards, and cloud command/result contracts. [October 15 log](../project/evidence/oct15-verification.txt) records preparation-environment output. It is not a live-cloud test log.
+
+OpenAI Codex substantially assisted with implementation, tests, research, and documentation. [AI usage](../project/ai-usage.md) records extent and limitations; [costs](../project/costs.md) covers paid services and open alternatives. Student review and rehearsal remain necessary.
