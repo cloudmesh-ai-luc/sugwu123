@@ -51,7 +51,7 @@ The logistic model has an intercept and two fixed-scale features: the prior five
 | Chameleon KVM@TACC | OpenStack reproduction of the same source and dataset | `--cloud chameleon` plan and guest-analysis smoke command | Account, allocation, deployment, and smoke test unverified |
 | Google Compute Engine | Short CPU evaluation on a public cloud | Upstream key `--cloud google`; plan and guest-analysis smoke command; focused driver-constructor patch | Billing, credentials, provisioning, and smoke test unverified |
 
-The selection satisfies the required categories on paper. Instructor acceptance of the selection and actual three-cloud operation have not been established. Current integration targets upstream `dev2` at `f55d7bd`; Chameleon's native path also requires checking the instructor's current feature branch and smoke tests.
+The selection satisfies the required categories on paper. Instructor acceptance of the selection and actual three-cloud operation have not been established. Current integration targets upstream `dev2` at `f55d7bd`; Chameleon's native path also requires checking the instructor's current feature branch and smoke tests. The instructor's [latest Chameleon note](https://piazza.com/class/mt5rkdsycb31c3/post/126) uses `--security-group` and `--ssh-key`, with values taken from the actual allocation/configuration.
 
 ```bash
 python3 -m sports.cloud plan --cloud multipass
