@@ -1,35 +1,40 @@
-# Appendix: Costs and Open Alternatives
+# Appendix: SPORTSSTATS Costs and Open Alternatives
 
-Estimates were checked against official sources on October 15, 2026. They are planning estimates, not evidence of active credits or a bill already incurred.
+Checked October 15, 2026. The account screen and launch price are observations from that morning. The worked estimate is not an actual bill.
 
 | Component | Current use or estimate | Free/open alternative |
 | --- | --- | --- |
-| Sports application | Python standard library, SQLite, HTML/JS; no application API fee | Already open tooling; runs locally |
-| Historical data | FiveThirtyEight NBA data under CC BY 4.0; no data purchase | Existing synthetic fixture for software checks; cannot establish real predictive accuracy |
+| Application | Python standard library, SQLite, HTML/JS; no paid application API | Run the same code locally |
+| Historical data | FiveThirtyEight NBA data, CC BY 4.0; no purchase | Separate synthetic fixture for software checks |
 | Multipass | Local CPU, RAM, disk, electricity; no provider VM bill | Direct host execution; Multipass is open source |
-| Chameleon KVM@TACC | Depends on approved allocation and quota; allocation not verified | Multipass for local reproduction; remote portability remains unproven |
-| Google Compute Engine | Short e2-micro CPU run; account, region, quota, and billing unverified | Multipass or eligible Chameleon allocation |
-| Google AI Pro | Public U.S. listing: $19.99/month before taxes; $10/month GenAI/Cloud credit listed through Developer Program benefits | No paid plan needed for this application; appropriately licensed local models may help writing |
-| OpenAI Codex development help | Used for preparation; subscription price and attributable task cost unavailable | Manual coding/review, course documentation, or a suitably licensed local code model |
+| Chameleon KVM@TACC | Needs an approved allocation and quota; access unverified | Local Multipass; remote portability still needs testing |
+| Amazon EC2 | Selected public cloud; t3.micro in Ohio, Ubuntu 24.04, 8 GiB disk | Local Multipass or an eligible Chameleon allocation |
+| OpenAI Codex development help | Used substantially; subscription price and this task's share of cost unavailable | Manual coding/review, course materials, or an appropriately licensed local code model |
 
-## Worked Google Estimate
+## AWS Account and Worked Estimate
 
-The official Iowa (`us-central1`) on-demand e2-micro listing is **$0.008376428 per VM-hour**. A 15-minute run costs about **$0.00209 in compute** at that rate: `0.25 × 0.008376428`. This is not a full invoice estimate. Persistent disks, external IPv4, network transfer, taxes, regional differences, and other resources can add charges. An e2-micro has 1 GiB memory and shared CPU; application suitability and image compatibility require a real test.
+The student's AWS account screen showed **Free plan, $100 credits remaining, 183 days remaining**, with April 15, 2027 shown as the end date. This was observed on October 15 at about 8:48 am Chicago time. AWS states that its Free plan ends after six months or when credits run out, whichever happens first. The balance and terms must be checked again before use. No paid-plan upgrade was performed during this preparation.
 
-The free tier lists one eligible e2-micro instance's monthly usage in selected U.S. regions with additional limits. Eligible new accounts may receive a $300, 90-day trial. Neither free-tier eligibility nor trial availability has been confirmed for this account. Google AI Pro's listed $10 monthly credit requires the applicable benefit/account setup; it is not assumed to be claimed, attached to this billing account, or applicable to every service.
+The Ohio (`us-east-2`) launch screen displayed a Linux t3.micro compute rate of **$0.0104/hour**. A 15-minute run at that rate is **$0.0026 in compute**: `0.25 × 0.0104`. This is a planning calculation before applying credits. It excludes EBS storage, public IPv4, data transfer, possible surplus CPU credits, taxes, and other resources. The selected instance has 2 virtual CPUs and 1 GiB RAM. The application later passed 34 guest tests and displayed the historical NBA dashboard on this instance.
 
-Before a paid run, the operator must verify billing, credit terms and region, configure a low budget alert, restrict quota, and keep the run short. A budget alert does not stop spending. After collecting results, remove the dedicated VM and unneeded disks, addresses and other resources, then check inventory and billing. No paid project upgrade or purchase was performed during this preparation.
+A running EC2 instance, SSH access, guest tests, and the deployed dashboard were confirmed in the afternoon screenshots. Actual charges and the current credit balance have not been checked. Google Cloud was considered earlier but is no longer the selected public cloud. Neither Google AI Pro nor a paid sports-data service is needed for this application.
 
-## Service Choice
+## Cost Controls
 
-The current model is small CPU-only logistic regression. Neither a GPU nor a hosted LLM is needed for inference. An external commercial sports API or paid explanation service adds no necessary capability to this milestone. Open local tools preserve reproducibility without a subscription. A later LLM feature would need a separate cost, license, data-handling, and accuracy evaluation.
+Use one small instance and a short test. Check the Free-plan balance and available usage alerts. A budget alert alone does not stop spending. Stopping a VM can leave storage and other billable resources behind. After preserving the needed results, remove the dedicated VM and unneeded disks or addresses, then check inventory and billing. Keep the account on its Free plan unless a separate decision is made to upgrade.
+
+The course guidelines require billing alarms on commercial cloud accounts. No configured AWS billing alarm has been observed yet; Free-plan credits do not complete that requirement. On OpenStack, use Chameleon KVM@TACC and the smallest suitable VM. Shelve or delete it when idle; stopping alone is not sufficient under the assignment's resource rule.
+
+## Why These Services
+
+The model is a small CPU-only classifier. It needs no GPU or hosted LLM. Local Python and SQLite keep the analysis reproducible without a subscription. The remote clouds are used to test deployment and repeat the same calculation, not to change the model's accuracy.
 
 ## Sources
 
-- [Google Developer Program plans and pricing](https://developers.google.com/program/plans-and-pricing)
-- [Compute Engine general-purpose VM pricing](https://cloud.google.com/products/compute/pricing/general-purpose)
-- [Google Cloud free program and trial limits](https://docs.cloud.google.com/free/docs/free-cloud-features)
+- [AWS Free Tier FAQ and current plan terms](https://aws.amazon.com/free/free-tier-faqs/)
+- [EC2 on-demand pricing and additional charges](https://aws.amazon.com/ec2/pricing/on-demand/)
+- [EBS pricing](https://aws.amazon.com/ebs/pricing/)
 - [FiveThirtyEight data license](https://github.com/fivethirtyeight/data#license)
 - [Multipass source and license](https://github.com/canonical/multipass)
 
-Acknowledgment: OpenAI Codex researched and drafted this appendix. Prices are public listings rather than verified account-specific entitlements or charges.
+Acknowledgment: OpenAI Codex researched and drafted this appendix. Account observations, estimates, and unverified charges are stated separately. Student review is still needed.
