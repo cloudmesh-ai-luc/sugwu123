@@ -2,7 +2,7 @@
 
 Sydel Ugwu · COMP 388 · Solo project · Midterm progress report · October 15, 2026
 
-**Cloud choices:** Multipass, Chameleon KVM@TACC, and Amazon EC2 (AWS).
+**Cloud choices:** Multipass, Jetstream2 (OpenStack), and Amazon EC2 (AWS).
 
 ## Executive Summary
 
@@ -72,16 +72,15 @@ The project uses three cloud categories required by the assignment:
 | Cloud | Purpose | Recorded progress |
 | --- | --- | --- |
 | Multipass | Local development and deployment | October 1 evidence shows the earlier fictional-data app and service recovery after a restart. A recorded result is still needed for the updated historical app through cmx. |
-| Chameleon KVM@TACC | OpenStack deployment of the same application | Week 3 evidence shows an Ubuntu VM and SSH access. The saved record still needs the current SPORTSSTATS application and cmx results. |
+| Jetstream2 | OpenStack deployment of the same application | Week 3 evidence shows an Ubuntu 24.04 VM and SSH access. Week 4 includes OpenStack management commands. The saved record still needs the current SPORTSSTATS application and cmx results. |
 | Amazon EC2 (AWS) | Public-cloud run on Ubuntu | October 15 screenshots show SSH access, source transfer, 34 passing guest tests, a completed model command, and a working historical dashboard. Live cmx operation is a separate check. |
 
 The EC2 instance is named `SPORTSSTATS`. It was launched in the AWS console and set up through SSH. This shows that the application runs on AWS, while full automatic VM provisioning through cmx still needs its own evidence.
 
-The application's cmx adapter can print plans for each selected cloud:
+The application's cmx adapter currently prints plans for Multipass and AWS:
 
 ```bash
 python3 -m sports.cloud plan --cloud multipass
-python3 -m sports.cloud plan --cloud chameleon
 python3 -m sports.cloud plan --cloud aws
 ```
 
@@ -95,7 +94,7 @@ python3 -m sports.cloud smoke --cloud aws --name SPORTSSTATS
 
 The check looks for a success marker, data rows, and evaluated games in the output. A command returning without an error is not enough by itself. The reviewed upstream AWS provider has driver setup and method problems that remain separate from the working SSH deployment.
 
-The integration was checked against `dev2` at `f55d7bd`. Chameleon also needs the instructor's current branch guidance. Piazza [#126](https://piazza.com/class/mt5rkdsycb31c3/post/126) specifies `--security-group` and `--ssh-key`, using the actual account settings. [AWS setup](project/aws-setup.md) and [AWS evidence](project/evidence/aws-oct15.md) give more detail.
+The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](project/aws-setup.md) and [AWS evidence](project/evidence/aws-oct15.md) give more detail.
 
 ## DevOps
 
@@ -147,17 +146,17 @@ Review of the current code is finished for now. Sydel also reports completing th
 
 ## Issues and Remaining Work
 
-1. **Cloud results and automation:** the saved evidence still needs the updated Multipass and Chameleon application runs, matched results across all three clouds, and actual cmx operations. AWS console setup and SSH access do not by themselves demonstrate fully automatic VM provisioning.
+1. **Cloud results and automation:** the saved evidence still needs the updated Multipass and Jetstream2 application runs, matched results across all three clouds, and actual cmx operations. AWS console setup and SSH access do not by themselves demonstrate fully automatic VM provisioning.
 2. **Key-check records:** the last recorded scan incorrectly labeled a protected key as unprotected. The GitHub list also failed because `gh` was missing, followed by a misleading "No keys found" message. The final successful outputs need to be available privately for the instructor's check.
 3. **Approval:** formal project approval and acceptance of the chosen clouds are not documented in the reviewed course record. The choices fit the required local, OpenStack, and public-cloud categories.
-4. **Costs and cleanup:** AWS billing alarms have not been shown in the available evidence. The course requires them even with credits. Idle OpenStack VMs must be shelved or deleted; stopping alone is not enough.
+4. **Costs and cleanup:** AWS billing alarms have not been shown in the available evidence. The course requires them even with credits. The assignment asks students to keep Jetstream usage low to preserve class hours. Use the smallest suitable VM and shelve or delete it when idle; stopping alone is not enough.
 5. **Further testing:** the full live AWS model panel, updated service recovery, and broader model evaluation need recorded results. More seasons and teams would help test whether the findings hold beyond this Chicago example.
 
 Live NBA data and real player observations will be added later. Today's historical-data demo uses the completed 2014–15 season.
 
 ## Costs and AI Acknowledgment
 
-The application uses no paid sports-data service or hosted LLM API. Multipass uses local resources, and Chameleon needs an eligible allocation. The AWS account showed a Free plan, $100 in credits, and 183 days remaining at 8:48 am on October 15. That was the morning balance, not a current bill.
+The application uses no paid sports-data service or hosted LLM API. Multipass uses local resources, and Jetstream2 needs an eligible allocation. The AWS account showed a Free plan, $100 in credits, and 183 days remaining at 8:48 am on October 15. That was the morning balance, not a current bill.
 
 The Ohio t3.micro launch screen showed a compute rate of $0.0104 per hour. Fifteen minutes at that rate is $0.0026 before disk, public IP, transfer, and other charges. Actual charges have not been checked. [The cost appendix](project/costs.md) covers these limits and free or open alternatives.
 
