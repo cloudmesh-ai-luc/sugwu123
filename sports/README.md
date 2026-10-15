@@ -1,6 +1,6 @@
-# Sports Application
+# SPORTSSTATS Application
 
-The [solo sports project](../project.md) uses Python's standard library, SQLite, a JSON API, and a dashboard. Python 3.12+ is required; the application needs no pip packages or paid API. The current historical dataset has **team totals**. Real player statistics are not supplied.
+The [solo SPORTSSTATS project](../project.md) uses Python's standard library, SQLite, a JSON API, and a dashboard. Python 3.12+ is required; the application needs no pip packages or paid API. The current historical dataset has **team totals**. Real player statistics are not supplied. The project name is SPORTSSTATS; its Python package stays `sports`, so the existing commands still work.
 
 ## Real-Data Midterm Demo
 
@@ -80,28 +80,28 @@ make -C sports vm-start
 
 The existing automation transfers source, runs guest tests, preserves an existing default database, seeds synthetic data on a fresh deployment, and enables systemd on port 8000. **It still serves the synthetic/default database.** It does not automatically import the new historical source or switch the service to `history.sqlite3`. Do not describe a source redeployment alone as historical-model deployment.
 
-`NAME=sports-another-demo` selects another dedicated project VM. Only `sports-` names are accepted. Original [October 1 evidence](../project/vm-deployment.md) shows 23 guest tests then, deployment, stop/start, and 144 synthetic rows after recovery. It is separate from today's 34-test preparation result. Current Mac/VM verification remains to be performed.
+`NAME=sports-another-demo` selects another dedicated project VM. Only `sports-` names are accepted. Original [October 1 evidence](../project/vm-deployment.md) shows 23 guest tests then, deployment, stop/start, and 144 synthetic rows after recovery. The earlier October 15 build passed 34 tests on the Mac. The AWS-plan update has preparation-environment verification; the current historical-data demo and VM service still need Mac checks.
 
 ## Three-Cloud cmx Adapter
 
 ```bash
 python3 -m sports.cloud plan --cloud multipass
 python3 -m sports.cloud plan --cloud chameleon
-python3 -m sports.cloud plan --cloud google
+python3 -m sports.cloud plan --cloud aws
 ```
 
-Plans do not execute commands. Targets are Multipass, Chameleon KVM@TACC, and Google Compute Engine; cmx's provider key is `google`. Use the instructor's current dev2 and applicable Chameleon feature work. The audited start syntax creates a VM and is not an existing-VM resume operation.
+Plans do not execute commands. Selected targets are Multipass, Chameleon KVM@TACC, and Amazon EC2; AWS uses the name `SPORTSSTATS`. Google remains an optional plan, separate from the selected three. Use the instructor's current dev2 and applicable Chameleon feature work. The audited start syntax creates a VM and is not an existing-VM resume operation.
 
 Once source and the historical database really exist in `~/sports-project` on a configured target:
 
 ```bash
-python3 -m sports.cloud smoke --cloud google --name sports-google
+python3 -m sports.cloud smoke --cloud aws --name SPORTSSTATS
 ```
 
-This runs a guest analysis via `cmx vm run` and requires a valid success JSON payload with positive row/evaluation counts. A plain error string cannot pass. The adapter does not provision or install remote applications. Live cmx results, remote deployments, credentials, billing, and passphrase-protected keys remain unverified. [Current status](../project.md) and [checklist](../project/midterm-checklist.md) describe the outstanding work.
+This runs a guest analysis via `cmx vm run` and requires a valid success JSON payload with positive row/evaluation counts. A plain error string cannot pass. The adapter does not provision or install remote applications. The AWS Free plan and $100 credits were observed. Live cmx results, remote deployments, provider credentials, and passphrase-protected keys remain unverified. The audited AWS provider has unresolved initialization/method issues. A console launch alone does not complete cmx integration. Do not run the printed start command on an already-created VM. [AWS setup](../project/aws-setup.md) gives the current settings. [Current status](../project.md) and [checklist](../project/midterm-checklist.md) describe the outstanding work.
 
 ## Verification and Acknowledgment
 
-The current 34-test suite includes storage/statistics, leakage, importer fixtures, real HTTP CLI/API consistency, deployment safeguards, and cloud command/result contracts. [October 15 log](../project/evidence/oct15-verification.txt) records preparation-environment output. It is not a live-cloud test log.
+The current 34-test suite includes storage/statistics, leakage, importer fixtures, real HTTP CLI/API consistency, deployment safeguards, and cloud command/result contracts. [October 15 log](../project/evidence/oct15-verification.txt) records preparation-environment output. It is not a live-cloud test log. [Mac evidence](../project/evidence/mac-oct15.md) records the separate 34-test screenshot for the earlier October 15 build.
 
 OpenAI Codex substantially assisted with implementation, tests, research, and documentation. [AI usage](../project/ai-usage.md) records extent and limitations; [costs](../project/costs.md) covers paid services and open alternatives. Student review and rehearsal remain necessary.

@@ -1,4 +1,4 @@
-# Sports Project Report
+# SPORTSSTATS Project Report
 
 The canonical midterm progress report is [root project.md](../project.md). It contains the current real-data experiment, Cloud/DevOps/AI sections, three-cloud integration status, contribution summary, issues, and references. This pointer preserves earlier links without maintaining two conflicting reports.
 

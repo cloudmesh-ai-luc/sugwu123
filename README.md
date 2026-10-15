@@ -1,9 +1,9 @@
 # Cloud Computing (COMP 388)
 Sydel Ugwu
 
-## Sports Project and Midterm
+## SPORTSSTATS Project and Midterm
 
-This is a solo Sports Statistics and Probability Analysis Platform project.
+SPORTSSTATS is a solo basketball statistics and probability project.
 
 - [Canonical midterm progress report](project.md)
 - [Run the application](sports/README.md)
@@ -12,14 +12,15 @@ This is a solo Sports Statistics and Probability Analysis Platform project.
 - [Midterm checklist](project/midterm-checklist.md) and [rehearsal notes](project/presentation-notes.md)
 - [Current aggregate results](project/evidence/nba2015-summary.json) and [34-test preparation log](project/evidence/oct15-verification.txt)
 - [Original Mac VM deployment/recovery evidence](project/vm-deployment.md)
+- [AWS setup guide](project/aws-setup.md) and [October 15 Mac evidence](project/evidence/mac-oct15.md)
 
-The current experiment uses licensed 2014–15 NBA team data. On the same 72 Chicago evaluation games, logistic Brier is 0.2533 versus constant 50% at 0.2500; the classifier does not beat that baseline. The updated suite passes 34 tests in the preparation environment. October 1 Mac evidence covers the earlier synthetic application and 23 guest tests. Live Chameleon/Google work, the updated Mac demo, key checks, publication, and instructor approval remain open.
+The current experiment uses licensed 2014–15 NBA team data. On the same 72 Chicago evaluation games, logistic Brier is 0.2533 versus constant 50% at 0.2500; the classifier does not beat that baseline. The earlier October 15 build passed 34 tests on the Mac; the later AWS-plan update passed 34 tests in the preparation environment and still needs a Mac check. October 1 VM evidence covers the synthetic app and 23 guest tests. Live Chameleon/AWS work, the historical Mac demo, key checks, publication, and instructor approval remain open.
 
 ## Week 7
 
 - [x] Prepare the root progress report with Cloud Computing, DevOps, AI, and Issues sections.
 - [x] Prepare the required AI-use document and paid-service/open-alternative appendix.
-- [x] Define Multipass, Chameleon KVM@TACC, and Google targets with a concrete cmx adapter.
+- [x] Define Multipass, Chameleon KVM@TACC, and AWS targets with a concrete cmx adapter.
 - [x] Prepare one focused Google provider fix and four passing constructor tests.
 - [ ] Complete live three-cloud deployment/evaluation and verify SSH keys on the actual Mac.
 - [ ] Refresh dev2, review, and submit the single small upstream PR.

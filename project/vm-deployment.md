@@ -34,6 +34,6 @@ The post-restart host request returns `status: ok` and 144 synthetic rows. This 
 
 ## Current Verification Boundary
 
-The updated historical-data/model code and 34-test suite were verified in the preparation environment on October 15, not on this Mac or VM. The current VM automation still seeds/serves the default synthetic database. Importing the historical data, switching the deployed service, checking the updated dashboard, and reproducing the model on this VM remain open. Native Multipass evidence does not prove current cmx or remote-cloud behavior.
+The earlier October 15 build passed 34 tests on the Mac, as recorded in [Mac evidence](evidence/mac-oct15.md). The later AWS-plan update passed 34 tests in the preparation environment; its Mac check remains open. Neither result proves that the historical model runs on this VM. The current VM automation still seeds/serves the default synthetic database. Importing the historical data, switching the deployed service, checking the updated dashboard, and reproducing the model on this VM remain open. Native Multipass evidence does not prove current cmx or remote-cloud behavior.
 
 Acknowledgment: Original Mac screenshots provide the observed evidence. OpenAI Codex interpreted them and drafted this report; unobserved actions are not marked complete. See [AI usage](ai-usage.md).
