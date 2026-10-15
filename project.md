@@ -129,11 +129,6 @@ The historical import downloads about 18 MB into the ignored `sports/data/` fold
 
 ## Class Contributions and Instructor Feedback
 
-[PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11) is closed and was not merged. It changed 23 files, with 1,224 added lines and 378 removed. The instructor asked for an updated upstream base, existing tests to be preserved, shared hostlist tools to be reused, separate documentation, and one provider per PR. The instructor also asked for one PR at a time.
-
-Two smaller fixes are prepared in separate branches:
-
-- **Google driver setup:** four files, with 63 additions and 18 deletions. Seven focused tests pass without contacting Google. This remains a class-tool contribution even though SPORTSSTATS now uses AWS.
 - **Key scanner:** two files, with 81 additions and one deletion, mostly tests. The fix changes one command so the scanner checks for an empty passphrase without prompting. Two tests using temporary real keys pass. The terminal regression test fails on unchanged dev2.
 
 Neither fix has been published. The key-scanner patch has not been applied to the student's installed instructor code. Before a PR is submitted, its branch needs a fresh upstream check and focused tests. Each fix will stay separate, with documentation handled separately. [The contribution summary](project/contributions.md) explains the changes and the instructor's feedback.
