@@ -6,6 +6,7 @@ import sqlite3
 
 from .analytics import analyze
 from .demo import demo_rows
+from .model import analyze_model
 from .server import make_server
 from .store import DEFAULT_DB, Store, read_csv
 
@@ -22,11 +23,12 @@ def main(argv=None):
     ingest.add_argument("--rights", required=True, help="License or permission statement")
     ingest.add_argument("--replace", action="store_true")
     commands.add_parser("options", help="List available teams, players, and opponents")
-    analysis = commands.add_parser("analyze", help="Analyze historical points and evaluate a baseline")
-    analysis.add_argument("--team", required=True)
-    analysis.add_argument("--player")
-    analysis.add_argument("--opponent")
-    analysis.add_argument("--threshold", type=float, default=20.5)
+    for name in ("analyze", "model"):
+        analysis = commands.add_parser(name, help="Analyze rates or evaluate the logistic classifier")
+        analysis.add_argument("--team", required=True)
+        analysis.add_argument("--player")
+        analysis.add_argument("--opponent")
+        analysis.add_argument("--threshold", type=float, default=20.5 if name == "analyze" else 100.5)
     serve = commands.add_parser("serve", help="Start the local dashboard and JSON API")
     serve.add_argument("--host", default="127.0.0.1")
     serve.add_argument("--port", type=int, default=8000)
@@ -45,6 +47,9 @@ def main(argv=None):
         elif arguments.command == "analyze":
             result = analyze(store, arguments.team, arguments.player, arguments.opponent,
                              arguments.threshold)
+        elif arguments.command == "model":
+            result = analyze_model(store, arguments.team, arguments.player, arguments.opponent,
+                                   arguments.threshold)
         else:
             if not 0 < arguments.port <= 65535:
                 raise ValueError("Port must be between 1 and 65535")

@@ -50,6 +50,12 @@
           <div class="table-scroll"><table><caption class="muted">Up to ten selected games, newest first</caption><thead><tr><th>Date</th><th>Opponent</th><th>Points</th></tr></thead><tbody id="observations"></tbody></table></div>
         </article>
       </div>
+      <article class="panel">
+        <h3>Machine learning comparison</h3>
+        <p>Online logistic regression uses the previous game and prior five-game mean. All three scores below use the same games after ten prior observations.</p>
+        <dl><div><dt>Games evaluated</dt><dd id="ml-evaluated"></dd></div><div><dt>Logistic Brier score</dt><dd id="ml-brier"></dd></div><div><dt>Historical-rate baseline</dt><dd id="ml-history"></dd></div><div><dt>Constant 50% baseline</dt><dd id="ml-half"></dd></div></dl>
+        <p class="muted">Lower is better. A selected historical sample does not establish future prediction accuracy.</p>
+      </article>
       <p id="interpretation" class="footnote"></p>
     </section>
   </main>

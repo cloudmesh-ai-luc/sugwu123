@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
 from .analytics import analyze
+from .model import analyze_model
 
 
 STATIC = Path(__file__).resolve().parent / "web"
@@ -39,15 +40,16 @@ def make_server(store, host="127.0.0.1", port=8000):
                     self.respond(200, {"status": "ok", "dataset": store.metadata()})
                 elif request.path == "/api/options":
                     self.respond(200, store.options())
-                elif request.path == "/api/analyze":
+                elif request.path in {"/api/analyze", "/api/model"}:
                     arguments = parse_qs(request.query, keep_blank_values=True)
                     if set(arguments) - {"team", "player", "opponent", "threshold"}:
                         raise ValueError("Unknown analysis parameter")
                     if any(len(values) != 1 for values in arguments.values()):
                         raise ValueError("Supply each parameter once")
                     values = {key: value[0] for key, value in arguments.items()}
-                    threshold = float(values.get("threshold", "20.5"))
-                    self.respond(200, analyze(store, values.get("team", ""),
+                    threshold = float(values.get("threshold", "100.5" if request.path == "/api/model" else "20.5"))
+                    operation = analyze_model if request.path == "/api/model" else analyze
+                    self.respond(200, operation(store, values.get("team", ""),
                                               values.get("player") or None,
                                               values.get("opponent") or None, threshold))
                 else:

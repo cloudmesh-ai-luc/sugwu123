@@ -21,7 +21,9 @@ function options(element, values, allLabel) {
 
 function teamChanged() {
   const team = byId("team").value;
-  options(byId("player"), choices.players_by_team[team] || [], "Team total");
+  const players = (choices.players_by_team[team] || [])
+    .filter(player => !player.endsWith(" team total (aggregate)"));
+  options(byId("player"), players, "Team total");
   options(byId("opponent"), choices.opponents_by_team[team] || [], "All opponents");
   byId("threshold").value = "100.5";
 }
@@ -100,8 +102,16 @@ async function refresh() {
   try {
     const parameters = new URLSearchParams({team: byId("team").value, player: byId("player").value,
       opponent: byId("opponent").value, threshold: byId("threshold").value});
-    const result = await api(`/api/analyze?${parameters}`);
-    if (request === requestNumber) render(result);
+    const [result, comparison] = await Promise.all([
+      api(`/api/analyze?${parameters}`), api(`/api/model?${parameters}`)
+    ]);
+    if (request === requestNumber) {
+      render(result);
+      byId("ml-evaluated").textContent = comparison.model.evaluated_games;
+      byId("ml-brier").textContent = decimal(comparison.model.logistic_brier_score);
+      byId("ml-history").textContent = decimal(comparison.model.historical_brier_score);
+      byId("ml-half").textContent = decimal(comparison.model.constant_half_brier_score);
+    }
   } catch (error) {
     if (request === requestNumber) byId("message").textContent = error.message;
   } finally {
@@ -123,6 +133,7 @@ byId("opponent").addEventListener("change", refresh);
       : dataset.kind === "empty" ? "No dataset loaded. Use the documented CLI to generate a demo or import historical data."
       : `Imported data | Source: ${dataset.source} | Rights: ${dataset.rights}`;
     options(byId("team"), choices.teams);
+    if (choices.teams.includes("CHI")) byId("team").value = "CHI";
     if (choices.teams.length) {teamChanged(); await refresh();}
     else form.querySelector("button").disabled = true;
   } catch (error) {
