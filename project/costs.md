@@ -9,8 +9,6 @@ Checked October 15, 2026. The account screen and launch price are observations f
 | Multipass | Local CPU, RAM, disk, electricity; no provider VM bill | Direct host execution; Multipass is open source |
 | Chameleon KVM@TACC | Needs an approved allocation and quota; access unverified | Local Multipass; remote portability still needs testing |
 | Amazon EC2 | Selected public cloud; t3.micro in Ohio, Ubuntu 24.04, 8 GiB disk | Local Multipass or an eligible Chameleon allocation |
-| OpenAI Codex development help | Used substantially; subscription price and this task's share of cost unavailable | Manual coding/review, course materials, or an appropriately licensed local code model |
-
 ## AWS Account and Worked Estimate
 
 The student's AWS account screen showed **Free plan, $100 credits remaining, 183 days remaining**, with April 15, 2027 shown as the end date. This was observed on October 15 at about 8:48 am Chicago time. AWS states that its Free plan ends after six months or when credits run out, whichever happens first. The balance and terms must be checked again before use. No paid-plan upgrade was performed during this preparation.
