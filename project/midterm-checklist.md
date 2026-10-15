@@ -1,70 +1,56 @@
-# Midterm Preparation Checklist
+# October 15 Midterm Checklist
 
-The published [syllabus](https://cloudmesh-ai.github.io/cloudmesh-ai-lecture/lecture/01.1-syllabus/)
-tentatively lists **October 15, 2026** for a project review, programming assignment
-review, and review of class contributions. Confirm any schedule changes announced
-in class. The syllabus permits working individually.
+The official [Week 7 assignment](https://cloudmesh-ai.github.io/cloudmesh-ai-lecture/lecture/assignments/assignments/) requires three clouds, current cmx branches, small PRs, a contribution summary, and an in-class project review. Slides are optional. Root `project.md` is the review document. The student specified a 4:15 pm presentation today.
 
-The [project guidelines](https://cloudmesh-ai.github.io/cloudmesh-ai-lecture/lecture/assignments/overview/)
-require instructor approval, a non-trivial application, automated VM/container
-management, CLI/API access, and reproducibility. The list below is a preparation
-plan based on those requirements, not a separately published midterm grading rubric.
-
-| Requirement or preparation task | Current evidence | Next action |
+| Item | Current evidence | Required action |
 | --- | --- | --- |
-| Solo project and coherent scope | Sports proposal and individual progress report | Explain the selected basketball milestone |
-| Formal instructor approval | Not documented | Confirm approval and record its date/context |
-| Non-trivial statistical application | Threshold rates, uncertainty, chronological baseline evaluation | Run a documented real-data experiment |
-| CLI/API access and justified GUI | Shared CLI/API analysis; dashboard for trends and intervals | Demonstrate both CLI and dashboard |
-| Automated VM management | Dedicated Multipass deployment succeeded; service healthy | Verify stop/start persistence |
-| Reproducible results | 23 tests passed in preparation environment and in the deployed guest | Retain deployment evidence and demonstrate the app from the Mac |
-| Permitted data, no raw data in Git | Generated demo and ignore rules; import provenance fields | Select a licensed/public-domain dataset and retain it outside Git |
-| Coursework and contribution review | Week 1–5 links and upstream PR #11 | Resolve or clearly report remaining Week 5 failures and participation status |
+| Progress report, third person, solo scope | Root report rewritten around actual implementation/results | Review and publish prepared changes |
+| Cloud Computing, DevOps, AI, Issues | Explicit sections in root report | Explain each connection during review |
+| Permitted real data and chronological evaluation | Pinned CC BY 4.0 NBA import; exact aggregate results | Reproduce on Mac and explain the limitations |
+| Local software verification | 34 tests pass in preparation environment | Run the updated suite on Mac |
+| Local VM automation | October 1 deployment and stop/start recovery screenshots | Updated historical-model deployment still unverified |
+| Three clouds and cmx | Multipass/Chameleon/Google roles and command adapter | Account/provider setup and live remote deployment remain incomplete |
+| Small contribution | Google initialization plus one focused test file; four tests pass | Refresh dev2; review; submit only this PR first |
+| AI-use MD/slide | AI usage document records substantial assistance | Review for accuracy and present it |
+| Paid-service appendix and open alternatives | Cost appendix with estimate and prerequisites | Verify actual benefits/billing before any paid run |
+| SSH checks today | Instructor requires two cmx key commands on actual Mac | Run them privately; resolve keys lacking passphrases |
+| Instructor project/cloud approval | No explicit approval found in reviewed evidence | Confirm with instructor; do not mark approved without evidence |
+| GitHub publication | Write denied to integration | Apply prepared branch changes and push with working Mac access |
 
-## Before the Review
+## Mac Rehearsal
 
-- [x] Connect the prototype to the original sports objectives.
-- [x] Document that this is a solo project.
-- [x] Provide application tests, CLI/API access, and source-based demo generation.
-- [x] Prepare deployment automation and run it on the Mac.
-- [x] Publish the prototype and reports to the class repository.
-- [ ] Confirm formal instructor approval.
-- [ ] Import a permitted historical dataset with recorded source and rights.
-- [ ] Evaluate that dataset chronologically and explain uncertainty and bias.
-- [x] Run the sports VM deployment and retain a real health response/screenshot.
-- [ ] Verify the dashboard and API from the Mac browser/terminal.
-- [ ] Verify database persistence after stopping and starting the project VM.
-- [x] Update the progress report with the observed deployment results.
-- [ ] Review course/programming concepts and class contributions for the midterm.
-
-## Host Verification
-
-The [October 1 deployment screenshot](vm-deployment.md) records a successful
-guest deployment, 23 passing guest tests, and a healthy service. Dashboard
-reachability and stop/start persistence remain unverified.
-
-From the class repository root, retain the host test output separately from the
-preparation-environment verification:
+After applying the prepared changes, from the repository root:
 
 ```bash
-make -C sports test > project/host-verification.txt 2>&1
-make -C sports vm-deploy > project/vm-deployment.txt 2>&1
-make -C sports vm-status
-make -C sports vm-stop
-make -C sports vm-start
+python3 --version
+make -C sports test
+make -C sports history
+make -C sports model
+make -C sports historical-serve
 ```
 
-Inspect each command's output and exit status before marking it complete.
-Use the printed VM URL to check the dashboard and `/api/health` from the Mac.
-After stop/start, compare the same CLI/API analysis and source metadata with the
-earlier result. Record the observation rather than assuming persistence.
-Do not commit raw data, databases, VM disks, or credentials with these logs.
+Python 3.12+ is required. Skip `history` if `sports/data/history.sqlite3` already exists. Do not add `--replace` without deciding to replace that dataset. Open <http://127.0.0.1:8000>, select CHI, leave Player at Team total, and keep threshold 100.5. Expect 82 selected games, 43 above threshold, and 72 matched model-evaluation games. Stop the server with Control-C.
 
-## Short Demo Sequence
+In the environment containing the instructor's latest cmx, run:
 
-1. Explain the original sports problem and the narrowed points-threshold question.
-2. Identify whether the current data is fictional or real; name its source/rights.
-3. Show the same player analysis through the CLI and dashboard.
-4. Explain sample size, historical rate, uncertainty, and chronological error.
-5. Show actual VM deployment evidence and Week 5's remaining issues.
-6. Describe the next experiment and optional future extensions.
+```bash
+cmx key scan
+cmx key github list
+```
+
+Follow Piazza [#124](https://piazza.com/class/mt5rkdsycb31c3/post/124): GitHub/cloudmesh keys need passphrases and ssh-agent/Keychain support. Inspect results locally; do not post private keys, passwords, or detailed security inventory publicly. These checks were not run on the student's Mac by this preparation session.
+
+## Presentation Sequence
+
+1. Open root `project.md`; describe the existing sports problem and current milestone.
+2. Show the real source/license and team-total scope.
+3. Run CLI model output, then show the matching dashboard comparison.
+4. Explain why lower Brier is better and why 0.2500 beats the model's 0.2533 here.
+5. Separate old Mac evidence, current preparation tests, and unverified remote clouds.
+6. Show the single-provider PR scope and instructor-feedback response.
+7. Present `project/ai-usage.md`; identify substantial assistance and review responsibility.
+8. State unresolved issues and the next measured experiment.
+
+[Presentation notes and Q&A](presentation-notes.md) provide a short rehearsal script. This checklist records evidence, not a guarantee that all grading requirements are complete.
+
+Acknowledgment: OpenAI Codex drafted and checked this checklist against current course sources. Student review and Mac/cloud checks remain outstanding.
