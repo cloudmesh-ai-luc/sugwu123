@@ -11,12 +11,21 @@ from .vm import validate_name
 
 ROLES = {"multipass": "Local development and repeatable demo",
          "chameleon": "OpenStack deployment and cross-cloud reproduction at KVM@TACC",
+         "aws": "Short CPU model-evaluation run on Amazon EC2",
          "google": "Short CPU model-evaluation run on Google Compute Engine"}
-NAMES = {"multipass": "sports-midterm", "chameleon": "sports-chameleon", "google": "sports-google"}
+NAMES = {"multipass": "sports-midterm", "chameleon": "sports-chameleon",
+         "aws": "SPORTSSTATS", "google": "sports-google"}
+
+
+def validate_cloud_name(cloud, name):
+    # An EC2 Name tag can use the project title. Local VM safeguards stay intact.
+    if cloud == "aws" and name == "SPORTSSTATS":
+        return name
+    return validate_name(name)
 
 
 def plan(cloud, name):
-    validate_name(name)
+    validate_cloud_name(cloud, name)
     base = ["cmx", "vm", "--cloud", cloud]
     return {"cloud": cloud, "role": ROLES[cloud], "vm": name,
             "create": base + ["start", name], "inventory": base + ["list"],
@@ -40,7 +49,7 @@ def smoke_payload(output):
 
 
 def smoke(cloud, name, team, threshold):
-    validate_name(name)
+    validate_cloud_name(cloud, name)
     code = ("import json; from sports.store import Store; from sports.model import analyze_model; "
             f"r=analyze_model(Store('sports/data/history.sqlite3'),{team!r},threshold={threshold!r}); "
             "print(json.dumps(dict(sports_smoke='ok',rows=r['dataset']['rows'],"
