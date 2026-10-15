@@ -2,7 +2,7 @@
 
 Sydel Ugwu · COMP 388 · Solo project · Midterm progress report · October 15, 2026
 
-**Cloud choices:** Multipass, Jetstream2 (OpenStack), and Amazon EC2 (AWS).
+**Cloud choices:** Multipass, Jetstream2 (OpenStack), and Amazon (AWS).
 
 ## Summary
 
