@@ -1,22 +1,31 @@
 # Cloud Computing (COMP 388)
 Sydel Ugwu
 
-## Sports Project
+## Sports Project and Midterm
 
 This is a solo Sports Statistics and Probability Analysis Platform project.
 
-- [Project proposal and scope](project.md)
-- [Runnable sports prototype](sports/README.md)
-- [Midterm progress report](project/project.md)
-- [Midterm preparation checklist](project/midterm-checklist.md)
-- [Prototype verification](project/verification.txt)
-- [Sports VM deployment evidence](project/vm-deployment.md)
+- [Canonical midterm progress report](project.md)
+- [Run the application](sports/README.md)
+- [AI usage disclosure](project/ai-usage.md) and [cost appendix](project/costs.md)
+- [Contribution summary and instructor feedback](project/contributions.md)
+- [Midterm checklist](project/midterm-checklist.md) and [rehearsal notes](project/presentation-notes.md)
+- [Current aggregate results](project/evidence/nba2015-summary.json) and [34-test preparation log](project/evidence/oct15-verification.txt)
+- [Original Mac VM deployment/recovery evidence](project/vm-deployment.md)
 
-The sports application was deployed to a dedicated local Multipass VM on October 1,
-2026. All 23 tests passed in the guest and the service returned a healthy response.
-The prototype uses explicitly fictional basketball data. Real historical data,
-dashboard and stop/start verification, and instructor approval remain to be recorded.
+The current experiment uses licensed 2014–15 NBA team data. On the same 72 Chicago evaluation games, logistic Brier is 0.2533 versus constant 50% at 0.2500; the classifier does not beat that baseline. The updated suite passes 34 tests in the preparation environment. October 1 Mac evidence covers the earlier synthetic application and 23 guest tests. Live Chameleon/Google work, the updated Mac demo, key checks, publication, and instructor approval remain open.
 
+## Week 7
+
+- [x] Prepare the root progress report with Cloud Computing, DevOps, AI, and Issues sections.
+- [x] Prepare the required AI-use document and paid-service/open-alternative appendix.
+- [x] Define Multipass, Chameleon KVM@TACC, and Google targets with a concrete cmx adapter.
+- [x] Prepare one focused Google provider fix and four passing constructor tests.
+- [ ] Complete live three-cloud deployment/evaluation and verify SSH keys on the actual Mac.
+- [ ] Refresh dev2, review, and submit the single small upstream PR.
+- [ ] Apply and publish the prepared class-repository changes; rehearse the current demo.
+
+Acknowledgment: OpenAI Codex substantially assisted with the new implementation, tests, and midterm materials. Extent, verification limits, and student review responsibility are recorded in the AI-use document.
 
 ## Week 5
 
@@ -28,7 +37,7 @@ dashboard and stop/start verification, and instructor approval remain to be reco
 - [x] Record progress and unfinished work.
 - [x] Update Multipass provider documentation.
 - [ ] Fully validate all commands and naming behavior.
-- [x] Open upstream [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11).
+- [x] Submit upstream [PR #11](https://github.com/cloudmesh-ai/cloudmesh-ai-vm/pull/11), now closed and unmerged; see the contribution summary for feedback.
 - [ ] Complete individual Piazza participation and peer review.
 
 [Week 5 report](assignments/week5/README.md)
