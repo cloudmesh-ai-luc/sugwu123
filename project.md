@@ -4,7 +4,7 @@ Sydel Ugwu · COMP 388 · Solo project · Midterm progress report · October 15,
 
 **Cloud choices:** Multipass, Jetstream2 (OpenStack), and Amazon EC2 (AWS).
 
-## Executive Summary
+## Summary
 
 SPORTSSTATS is Sydel Ugwu's solo project for exploring basketball scores and comparing predictions. Users can choose a team and a points target, then see how often that team passed the target. The project uses Python and SQLite, with a terminal interface, a JSON API, and a web dashboard.
 
