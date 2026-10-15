@@ -7,15 +7,17 @@ The official [Week 7 assignment](https://cloudmesh-ai.github.io/cloudmesh-ai-lec
 | Progress report, third person, solo scope | Root report rewritten around actual implementation/results | Review and publish prepared changes |
 | Cloud Computing, DevOps, AI, Issues | Explicit sections in root report | Explain each connection during review |
 | Permitted real data and chronological evaluation | Pinned CC BY 4.0 NBA import; exact aggregate results | Reproduce on Mac and explain the limitations |
-| Local software verification | 34 tests pass in preparation environment | Run the updated suite on Mac |
+| Application verification | October 15 screenshots show 34 passing tests on Mac and 34 on AWS | Rerun after applying any code update |
 | Local VM automation | October 1 deployment and stop/start recovery screenshots | Updated historical-model deployment still unverified |
-| Three clouds and cmx | Multipass/Chameleon/Google roles and command adapter | Account/provider setup and live remote deployment remain incomplete |
-| Small contribution | Google initialization plus one focused test file; four tests pass | Refresh dev2; review; submit only this PR first |
+| Three clouds and cmx | AWS historical dashboard works through SSH; selected targets are Multipass/Chameleon/AWS | Check updated local/Chameleon guests and actual cmx operations |
+| Small contribution | Separate Google and key-scanner fixes prepared with focused tests | Refresh dev2; review one candidate; submit one PR at a time |
 | AI-use MD/slide | AI usage document records substantial assistance | Review for accuracy and present it |
-| Paid-service appendix and open alternatives | Cost appendix with estimate and prerequisites | Verify actual benefits/billing before any paid run |
-| SSH checks today | Instructor requires two cmx key commands on actual Mac | Run them privately; resolve keys lacking passphrases |
-| Instructor project/cloud approval | No explicit approval found in reviewed evidence | Confirm with instructor; do not mark approved without evidence |
-| GitHub publication | Write denied to integration | Apply prepared branch changes and push with working Mac access |
+| Paid-service appendix and open alternatives | AWS appendix with observed credits and compute estimate | Verify required billing alarms; check balance and costs |
+| SSH checks today | Both commands attempted; protected keys loaded into agent; scanner bug and missing gh found | Finish the GitHub list; keep scanner evidence private and report the bug accurately |
+| Instructor project/cloud approval | No student entry found in the reviewed Piazza #86 record | Confirm Multipass/Chameleon/AWS selection and formal project approval |
+| GitHub publication | Default main still shows the older report | Review each prepared change before publishing with working Mac access |
+| Full environment automation | Local Multipass script exists; remote setup is incomplete | Finish non-interactive remote deployment and actual cmx verification |
+| OpenStack cleanup | Instructor requires KVM@TACC and careful resource use | Use the smallest suitable VM; shelve/delete when idle |
 
 ## Mac Rehearsal
 
@@ -38,7 +40,7 @@ cmx key scan
 cmx key github list
 ```
 
-Follow Piazza [#124](https://piazza.com/class/mt5rkdsycb31c3/post/124): GitHub/cloudmesh keys need passphrases and ssh-agent/Keychain support. Inspect results locally; do not post private keys, passwords, or detailed security inventory publicly. These checks were not run on the student's Mac by this preparation session.
+Follow Piazza [#124](https://piazza.com/class/mt5rkdsycb31c3/post/124#): GitHub/cloudmesh keys need passphrases and ssh-agent/Keychain support. Demonstrate both command outputs in class, or show the instructor a local file containing them. Keep detailed outputs outside public Git. The Mac scanner prompted for a protected key and still reported "No"; an isolated regression test reproduced this upstream bug. The GitHub list failed because `gh` was missing. Neither result should be presented as a completed successful check.
 
 ## Presentation Sequence
 
@@ -46,11 +48,11 @@ Follow Piazza [#124](https://piazza.com/class/mt5rkdsycb31c3/post/124): GitHub/c
 2. Show the real source/license and team-total scope.
 3. Run CLI model output, then show the matching dashboard comparison.
 4. Explain why lower Brier is better and why 0.2500 beats the model's 0.2533 here.
-5. Separate old Mac evidence, current preparation tests, and unverified remote clouds.
-6. Show the single-provider PR scope and instructor-feedback response.
+5. Show the working AWS dashboard; distinguish it from older VM evidence and pending cmx/Chameleon results.
+6. Explain the instructor's PR feedback and show only one focused candidate at a time.
 7. Present `project/ai-usage.md`; identify substantial assistance and review responsibility.
 8. State unresolved issues and the next measured experiment.
 
 [Presentation notes and Q&A](presentation-notes.md) provide a short rehearsal script. This checklist records evidence, not a guarantee that all grading requirements are complete.
 
-Acknowledgment: OpenAI Codex drafted and checked this checklist against current course sources. Student review and Mac/cloud checks remain outstanding.
+Acknowledgment: OpenAI Codex drafted and checked this checklist against course sources. Student review, complete key checks, and the remaining cloud checks are still needed.
