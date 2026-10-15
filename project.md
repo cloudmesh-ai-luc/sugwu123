@@ -73,7 +73,7 @@ The project uses three cloud categories required by the assignment:
 | --- | --- | --- |
 | Multipass | Local development and deployment | October 1 evidence shows the earlier fictional-data app and service recovery after a restart. A recorded result is still needed for the updated historical app through cmx. |
 | Jetstream2 | OpenStack deployment of the same application | Week 3 evidence shows an Ubuntu 24.04 VM and SSH access. Week 4 includes OpenStack management commands. The saved record still needs the current SPORTSSTATS application and cmx results. |
-| Amazon Azure (AWS) | Public-cloud run on Ubuntu | October 15 screenshots show SSH access, source transfer, 34 passing guest tests, a completed model command, and a working historical dashboard. Live cmx operation is a separate check. |
+| Amazon (AWS) | Public-cloud run on Ubuntu | October 15 screenshots show SSH access, source transfer, 34 passing guest tests, a completed model command, and a working historical dashboard. Live cmx operation is a separate check. |
 
 The EC2 instance is named `SPORTSSTATS`. It was launched in the AWS console and set up through SSH. This shows that the application runs on AWS, while full automatic VM provisioning through cmx still needs its own evidence.
 
