@@ -1,6 +1,9 @@
 # SPORTSSTATS
 
-Sydel Ugwu · COMP 388 · Solo project · Midterm progress report · October 15, 2026
+* Sydel Ugwu 
+* COMP 388 
+* Midterm progress report 
+* October 15, 2026
 
 **Cloud choices:** Multipass, Jetstream2 (OpenStack), and Amazon (AWS).
 
@@ -110,7 +113,7 @@ An [installer for existing Ubuntu VMs](project/existing-vm-setup.md) is also pre
 - [Mac checks](project/evidence/mac-oct15.md): the October 15, 8:30 am screenshot shows 34 tests and `OK`. Later AWS-plan changes passed in preparation and need a recorded Mac rerun.
 - [AWS checks](project/evidence/aws-oct15.md): the 2:20 pm screenshot shows 34 tests in 1.719 seconds and `OK`. At 2:28 pm, the dashboard showed Chicago's 43 of 82 games above the target, a 52.4% rate, and a 100.8-point average. The lower 72-game model panel was outside that screenshot.
 - [Saved experiment results](project/evidence/nba2015-summary.json): exact scores, model settings, source revision, and checksum.
-- [Earlier VM checks](project/vm-deployment.md): October 1 screenshots show 23 guest tests for the older app and a healthy service with 144 fictional-data rows after restart. This is evidence for that earlier version, rather than the new historical model or a byte-for-byte database comparison.
+- [Earlier VM checks](evidence/vm-deployment.md): October 1 screenshots show 23 guest tests for the older app and a healthy service with 144 fictional-data rows after restart. This is evidence for that earlier version, rather than the new historical model or a byte-for-byte database comparison.
 
 ## Running the Project
 
