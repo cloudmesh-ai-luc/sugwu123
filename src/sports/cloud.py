@@ -34,9 +34,17 @@ def plan(cloud, name):
             "status": "Plan only. Credentials, quotas, SSH keys and live results are not verified."}
 
 
+ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
+
+
+def strip_ansi(text):
+    """Strip ANSI escape sequences from CLI output."""
+    return ANSI_ESCAPE_RE.sub("", text or "")
+
+
 def smoke_payload(output):
     # Rich may add a provider banner. A zero CLI exit alone does not prove success.
-    plain = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", output)
+    plain = strip_ansi(output)
     for match in re.finditer(r"\{", plain):
         try:
             result, _ = json.JSONDecoder().raw_decode(plain[match.start():])

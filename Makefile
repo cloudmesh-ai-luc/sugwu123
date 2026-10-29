@@ -9,7 +9,7 @@ install:
 	$(PYTHON) -m pip install -e .
 
 test:
-	PYTHONPATH=src $(PYTHON) -m unittest discover -s src/sports/tests -t src -v
+	PYTHONPATH=src $(PYTHON) -m unittest discover -s src/sports/tests -v
 
 demo:
 	PYTHONPATH=src $(PYTHON) -m sports import-nba

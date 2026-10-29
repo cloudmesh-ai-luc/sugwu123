@@ -1,0 +1,15 @@
+model:
+  learning_rate: 0.05
+  feature_scale: 20.0
+  training_starts_after: 5
+  minimum_history: 10
+  default_model_threshold: 100.5
+  default_player_threshold: 20.5
+  default_team: "CHI"
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+
+cloud:
+  bootstrap_script: "install-guest.sh"

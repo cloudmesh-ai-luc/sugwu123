@@ -14,6 +14,47 @@ FIELDS = ("game_id", "date", "team", "opponent", "player", "points",
 DEFAULT_DB = Path(__file__).resolve().parent / "data" / "sports.sqlite3"
 
 
+def _validate_numeric_scores(raw, row, number):
+    """Validate integer score fields and basic team/player score bounds."""
+    for field in FIELDS[5:]:
+        value = str(raw[field])
+        if not value.isascii() or not value.isdigit() or int(value) > 1000:
+            raise ValueError(f"Row {number}: {field} must be an integer from 0 to 1000")
+        row[field] = int(value)
+    if row["team"] == row["opponent"] or row["points"] > row["team_score"]:
+        raise ValueError(f"Row {number}: inconsistent team or player score")
+
+
+def _record_game_observation(row, number, seen, games, totals):
+    """Check duplicate player entries and cumulative team score consistency."""
+    observation_key = (row["game_id"], row["player"])
+    if observation_key in seen:
+        raise ValueError(f"Row {number}: duplicate player in a game")
+    seen.add(observation_key)
+    game_key = (row["game_id"], row["team"])
+    details = (row["date"], row["opponent"], row["team_score"], row["opponent_score"])
+    if game_key in games and games[game_key] != details:
+        raise ValueError(f"Row {number}: inconsistent game details")
+    games[game_key] = details
+    totals[game_key] = totals.get(game_key, 0) + row["points"]
+    if totals[game_key] > row["team_score"]:
+        raise ValueError(f"Row {number}: recorded players exceed team score")
+
+
+def _validate_opposing_sides(games):
+    """Ensure two-team games agree on date, opponent, and mirrored final scores."""
+    by_game = {}
+    for (game_id, team), details in games.items():
+        by_game.setdefault(game_id, {})[team] = details
+    for sides in by_game.values():
+        if len(sides) > 2:
+            raise ValueError("A game cannot contain more than two teams")
+        if len(sides) == 2:
+            (left, a), (right, b) = sides.items()
+            if a != (b[0], right, b[3], b[2]) or b[1] != left:
+                raise ValueError("Opposing team rows have inconsistent scores or dates")
+
+
 def validate_rows(rows):
     validated, seen, games, totals = [], set(), {}, {}
     for number, raw in enumerate(rows, 2):
@@ -30,38 +71,12 @@ def validate_rows(rows):
                 raise ValueError
         except ValueError:
             raise ValueError(f"Row {number}: date must be YYYY-MM-DD") from None
-        for field in FIELDS[5:]:
-            value = str(raw[field])
-            if not value.isascii() or not value.isdigit() or int(value) > 1000:
-                raise ValueError(f"Row {number}: {field} must be an integer from 0 to 1000")
-            row[field] = int(value)
-        if row["team"] == row["opponent"] or row["points"] > row["team_score"]:
-            raise ValueError(f"Row {number}: inconsistent team or player score")
-        observation_key = (row["game_id"], row["player"])
-        if observation_key in seen:
-            raise ValueError(f"Row {number}: duplicate player in a game")
-        seen.add(observation_key)
-        game_key = (row["game_id"], row["team"])
-        details = (row["date"], row["opponent"], row["team_score"], row["opponent_score"])
-        if game_key in games and games[game_key] != details:
-            raise ValueError(f"Row {number}: inconsistent game details")
-        games[game_key] = details
-        totals[game_key] = totals.get(game_key, 0) + row["points"]
-        if totals[game_key] > row["team_score"]:
-            raise ValueError(f"Row {number}: recorded players exceed team score")
+        _validate_numeric_scores(raw, row, number)
+        _record_game_observation(row, number, seen, games, totals)
         validated.append(row)
     if not validated:
         raise ValueError("The dataset contains no observations")
-    by_game = {}
-    for (game_id, team), details in games.items():
-        by_game.setdefault(game_id, {})[team] = details
-    for sides in by_game.values():
-        if len(sides) > 2:
-            raise ValueError("A game cannot contain more than two teams")
-        if len(sides) == 2:
-            (left, a), (right, b) = sides.items()
-            if a != (b[0], right, b[3], b[2]) or b[1] != left:
-                raise ValueError("Opposing team rows have inconsistent scores or dates")
+    _validate_opposing_sides(games)
     return validated
 
 

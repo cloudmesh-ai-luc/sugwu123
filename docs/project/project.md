@@ -97,7 +97,7 @@ python3 -m sports.cloud smoke --cloud aws --name SPORTSSTATS
 
 The check looks for a success marker, data rows, and evaluated games in the output. A command returning without an error is not enough by itself. The reviewed upstream AWS provider has driver setup and method problems that remain separate from the working SSH deployment.
 
-The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](aws-setup.md) and [AWS evidence](evidence/aws-oct15.md) give more detail.
+The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](aws-setup.md) and [AWS evidence](evidence/aws-oct15.md) give more detail.
 
 ## DevOps
 
@@ -109,10 +109,10 @@ An [installer for existing Ubuntu VMs](existing-vm-setup.md) is also prepared. I
 
 ## Testing and Evidence
 
-- [Preparation checks](project/evidence/oct15-verification.txt): 34 passing application tests, including model timing and HTTP checks. These ran without a real cloud account.
+- [Preparation checks](evidence/oct15-verification.txt): 34 passing application tests, including model timing and HTTP checks. These ran without a real cloud account.
 - [Mac checks](evidence/mac-oct15.md): the October 15, 8:30 am screenshot shows 34 tests and `OK`. Later AWS-plan changes passed in preparation and need a recorded Mac rerun.
 - [AWS checks](evidence/aws-oct15.md): the 2:20 pm screenshot shows 34 tests in 1.719 seconds and `OK`. At 2:28 pm, the dashboard showed Chicago's 43 of 82 games above the target, a 52.4% rate, and a 100.8-point average. The lower 72-game model panel was outside that screenshot.
-- [Saved experiment results](project/evidence/nba2015-summary.json): exact scores, model settings, source revision, and checksum.
+- [Saved experiment results](evidence/nba2015-summary.json): exact scores, model settings, source revision, and checksum.
 - [Earlier VM checks](vm-deployment.md): October 1 screenshots show 23 guest tests for the older app and a healthy service with 144 fictional-data rows after restart. This is evidence for that earlier version, rather than the new historical model or a byte-for-byte database comparison.
 
 ## Running the Project
@@ -128,7 +128,7 @@ make -C sports historical-serve
 
 The local dashboard opens at <http://127.0.0.1:8000>. It starts with Chicago and a 100.5-point target. The working AWS tunnel used Mac port 8001, so that dashboard opens at <http://127.0.0.1:8001> while the guest server and tunnel stay open.
 
-The historical import downloads about 18 MB into the ignored `sports/data/` folder. Skip `history` if the historical database already exists. The fictional demo has a separate database. More commands are in [the run instructions](sports/README.md).
+The historical import downloads about 18 MB into the ignored `sports/data/` folder. Skip `history` if the historical database already exists. The fictional demo has a separate database. More commands are in [the run instructions](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/src/sports/README.md).
 
 ## Class Contributions and Instructor Feedback
 
