@@ -1,6 +1,6 @@
 # Midterm Requirements Trace
 
-Rechecked October 15, 2026 against the current Week 7 assignment, project guidelines, Piazza #49, #86, #88, #100–102, #110–111, #118, and #123–126, plus the full instructor thread on PR #11. The newest visible feed item, #127, is a student's request about presentation order; it does not confirm this student's presentation slot. See root [project.md](../project.md) for current findings rather than treating this trace as proof of completion.
+Rechecked October 15, 2026 against the current Week 7 assignment, project guidelines, Piazza #49, #86, #88, #100–102, #110–111, #118, and #123–126, plus the full instructor thread on PR #11. The newest visible feed item, #127, is a student's request about presentation order; it does not confirm this student's presentation slot. See root [project.md](project.md) for current findings rather than treating this trace as proof of completion.
 
 | Instructor direction | Source | Prepared response / remaining evidence |
 | --- | --- | --- |

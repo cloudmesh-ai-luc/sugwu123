@@ -23,9 +23,21 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: '!!python/name:pymdownx.superfences.fence_code_format'
 
 nav:
   - Home: index.md
-  - Project: project/project.md
-
+  - Project:
+      - Progress Report: project/project.md
+      - Overview: project/project-intro.md
+      - Requirements Trace: project/requirements.md
+      - Midterm Checklist: project/midterm-checklist.md
+      - Presentation Notes: project/presentation-notes.md
+      - Contributions: project/contributions.md
+      - Costs & Alternatives: project/costs.md
+      - AI Usage Disclosure: project/ai-usage.md
+      - AWS Setup: project/aws-setup.md
+      - Existing VM Setup: project/existing-vm-setup.md
+      - VM Deployment: project/vm-deployment.md
+      - Evidence (Mac Oct 15): project/evidence/mac-oct15.md
+      - Evidence (AWS Oct 15): project/evidence/aws-oct15.md

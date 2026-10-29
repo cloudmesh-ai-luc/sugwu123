@@ -97,7 +97,7 @@ python3 -m sports.cloud smoke --cloud aws --name SPORTSSTATS
 
 The check looks for a success marker, data rows, and evaluated games in the output. A command returning without an error is not enough by itself. The reviewed upstream AWS provider has driver setup and method problems that remain separate from the working SSH deployment.
 
-The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](project/aws-setup.md) and [AWS evidence](project/evidence/aws-oct15.md) give more detail.
+The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](aws-setup.md) and [AWS evidence](evidence/aws-oct15.md) give more detail.
 
 ## DevOps
 
@@ -105,15 +105,15 @@ Make targets group the common test, import, model, and server commands. Automate
 
 The existing Multipass deployment script creates a dedicated Ubuntu 24.04 VM, transfers source, runs tests, and sets up a systemd service. The database stays on the guest disk. The earlier service restart was checked on October 1.
 
-An [installer for existing Ubuntu VMs](project/existing-vm-setup.md) is also prepared. It runs tests, imports missing historical data, and creates a separate service on guest port 8765. Shell and service-file checks passed in preparation. A live installation with this new script has not been recorded. It leaves the instructor's cmx code alone.
+An [installer for existing Ubuntu VMs](existing-vm-setup.md) is also prepared. It runs tests, imports missing historical data, and creates a separate service on guest port 8765. Shell and service-file checks passed in preparation. A live installation with this new script has not been recorded. It leaves the instructor's cmx code alone.
 
 ## Testing and Evidence
 
 - [Preparation checks](project/evidence/oct15-verification.txt): 34 passing application tests, including model timing and HTTP checks. These ran without a real cloud account.
-- [Mac checks](project/evidence/mac-oct15.md): the October 15, 8:30 am screenshot shows 34 tests and `OK`. Later AWS-plan changes passed in preparation and need a recorded Mac rerun.
-- [AWS checks](project/evidence/aws-oct15.md): the 2:20 pm screenshot shows 34 tests in 1.719 seconds and `OK`. At 2:28 pm, the dashboard showed Chicago's 43 of 82 games above the target, a 52.4% rate, and a 100.8-point average. The lower 72-game model panel was outside that screenshot.
+- [Mac checks](evidence/mac-oct15.md): the October 15, 8:30 am screenshot shows 34 tests and `OK`. Later AWS-plan changes passed in preparation and need a recorded Mac rerun.
+- [AWS checks](evidence/aws-oct15.md): the 2:20 pm screenshot shows 34 tests in 1.719 seconds and `OK`. At 2:28 pm, the dashboard showed Chicago's 43 of 82 games above the target, a 52.4% rate, and a 100.8-point average. The lower 72-game model panel was outside that screenshot.
 - [Saved experiment results](project/evidence/nba2015-summary.json): exact scores, model settings, source revision, and checksum.
-- [Earlier VM checks](evidence/vm-deployment.md): October 1 screenshots show 23 guest tests for the older app and a healthy service with 144 fictional-data rows after restart. This is evidence for that earlier version, rather than the new historical model or a byte-for-byte database comparison.
+- [Earlier VM checks](vm-deployment.md): October 1 screenshots show 23 guest tests for the older app and a healthy service with 144 fictional-data rows after restart. This is evidence for that earlier version, rather than the new historical model or a byte-for-byte database comparison.
 
 ## Running the Project
 
@@ -134,7 +134,7 @@ The historical import downloads about 18 MB into the ignored `sports/data/` fold
 
 - **Key scanner:** two files, with 81 additions and one deletion, mostly tests. The fix changes one command so the scanner checks for an empty passphrase without prompting. Two tests using temporary real keys pass. The terminal regression test fails on unchanged dev2.
 
-Neither fix has been published. The key-scanner patch has not been applied to the student's installed instructor code. Before a PR is submitted, its branch needs a fresh upstream check and focused tests. Each fix will stay separate, with documentation handled separately. [The contribution summary](project/contributions.md) explains the changes and the instructor's feedback.
+Neither fix has been published. The key-scanner patch has not been applied to the student's installed instructor code. Before a PR is submitted, its branch needs a fresh upstream check and focused tests. Each fix will stay separate, with documentation handled separately. [The contribution summary](contributions.md) explains the changes and the instructor's feedback.
 
 ## Student Work and Review
 
@@ -156,9 +156,9 @@ Live NBA data and real player observations will be added later. Today's historic
 
 The application uses no paid sports-data service or hosted LLM API. Multipass uses local resources, and Jetstream2 needs an eligible allocation. The AWS account showed a Free plan, $100 in credits, and 183 days remaining at 8:48 am on October 15. That was the morning balance, not a current bill.
 
-The Ohio t3.micro launch screen showed a compute rate of $0.0104 per hour. Fifteen minutes at that rate is $0.0026 before disk, public IP, transfer, and other charges. Actual charges have not been checked. [The cost appendix](project/costs.md) covers these limits and free or open alternatives.
+The Ohio t3.micro launch screen showed a compute rate of $0.0104 per hour. Fifteen minutes at that rate is $0.0026 before disk, public IP, transfer, and other charges. Actual charges have not been checked. [The cost appendix](costs.md) covers these limits and free or open alternatives.
 
-OpenAI was used in the process of formatting the NBA stats. The exact model name was not shown in the session. Sydel is responsible for reviewing the work and explaining the results and limitations. [The AI-use document](project/ai-usage.md) gives more detail about the assistance and checks.
+OpenAI was used in the process of formatting the NBA stats. The exact model name was not shown in the session. Sydel is responsible for reviewing the work and explaining the results and limitations. [The AI-use document](ai-usage.md) gives more detail about the assistance and checks.
 
 ## References
 
