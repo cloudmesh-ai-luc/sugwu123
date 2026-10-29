@@ -1,7 +1,7 @@
 # Cloud Computing (COMP 388)
 Sydel Ugwu
 
-## SPORTSSTATS Project and Midterm
+## SPORTSSTATS Project
 
 SPORTSSTATS is a solo basketball statistics and probability project.
 
