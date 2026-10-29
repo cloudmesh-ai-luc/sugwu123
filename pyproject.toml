@@ -1,14 +1,29 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "sugwu123"
 version = "0.1.0"
-description = "sugwu123 project documentation and assignments"
+description = "SPORTSSTATS: Sports Statistics and Probability Analysis Platform (COMP 388)"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
+authors = [
+    { name = "Sydel Ugwu", email = "sydel.ugwu@gmail.com" }
+]
 dependencies = [
     "mkdocs",
     "mkdocs-material",
 ]
+
+[project.scripts]
+sports = "sports.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sports = ["web/*"]
