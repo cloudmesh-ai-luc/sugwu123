@@ -1,9 +1,53 @@
-# Weekly Status Updates — Sydel Ugwu (`sugwu123`)
+## Status & Weekly Work Log — Sydel Ugwu (`sugwu123`)
 
-## Week of October 29 – November 5, 2026
+### [week/nov5](week/nov5/README.md)
+- Switched cloudmesh-ai-vm to dev3 and passed all 13 configuration checks in tests/smoke/test_config.py.
+- Resolved Python 3.13 list type annotation shadowing across DockerManager and 10 VM provider classes.
+- Verified cmx vm provider list and cmx vm doctor (HEALTHY) on dev3.
+- Executed Multipass CLI lifecycle smoke test on dev3 and pushed logs to cloudmesh-ai-vm-results (commit de8d798).
+- Configured OpenStack clouds.yaml entries for Jetstream2 and Chameleon KVM@TACC.
 
-- **Repository Restructuring & Packaging ([Post #150](https://piazza.com/class/mt5rkdsycb31c3/post/150)):** Reorganized the `SPORTSSTATS` package under `src/sports/`, added a root `Makefile` (`install`, `test`, `demo`, `run`, `doc`, `view`, `clean`), updated `pyproject.toml`, and verified editable installation (`make install`) and all 34 unit/HTTP tests (`make test`) in commit [`a2477db`](https://github.com/cloudmesh-ai-luc/sugwu123/commit/a2477db).
-- **Instructor Code Review Polishing ([Post #169](https://piazza.com/class/mt5rkdsycb31c3/post/169)):** Saved backup branch [`backup-pre-polish`](https://github.com/cloudmesh-ai-luc/sugwu123/tree/backup-pre-polish), added FastAPI and Pydantic query validation (`create_app` in `src/sports/server.py`), moved model/server/cloud constants into `src/sports/config.yaml` and `src/sports/config.py`, replaced `pass` in `log_message` with structured `logging`, decomposed `validate_rows` into smaller validator functions in `src/sports/store.py`, and extracted `strip_ansi` in `src/sports/cloud.py` in commit [`7fea762`](https://github.com/cloudmesh-ai-luc/sugwu123/commit/7fea762).
-- **MkDocs Documentation Site ([Post #151](https://piazza.com/class/mt5rkdsycb31c3/post/151) & [Post #152](https://piazza.com/class/mt5rkdsycb31c3/post/152)):** Populated `docs/index.md`, added all project pages and status page to `mkdocs.yml`, fixed relative links across `docs/project/`, and verified clean site generation (`mkdocs build` with 0 warnings) at [sugwu123 Documentation](https://cloudmesh-ai-luc.github.io/sugwu123/).
-- **`dev3` Config Validation & Smoke Tests ([Post #175](https://piazza.com/class/mt5rkdsycb31c3/post/175), [Post #178](https://piazza.com/class/mt5rkdsycb31c3/post/178) & [Post #180](https://piazza.com/class/mt5rkdsycb31c3/post/180)):** Passed all 13 configuration checks in `tests/smoke/test_config.py` (`13 passed`), verified `cmx vm provider list` and `cmx vm doctor` (`HEALTHY`), ran `make multipass` on `dev3`, and pushed both Oct 29 (`dev2`) and Nov 5 (`dev3`) benchmark logs to [`cloudmesh-ai-vm-results/sugwu123/smoke/`](https://github.com/cloudmesh-ai/cloudmesh-ai-vm-results/tree/main/sugwu123/smoke).
-- **`dev3` Pre-Assessment Issue & Action Plan ([Post #176](https://piazza.com/class/mt5rkdsycb31c3/post/176) & [Post #181](https://piazza.com/class/mt5rkdsycb31c3/post/181)):** Identified that on Python 3.12/3.13 (prior to Python 3.14/3.15 PEP 649 deferred annotations), 11 manager classes in `cloudmesh-ai-vm` (`DockerManager`, `MultipassManager`, `LimaManager`, `VBoxManager`, `Wsl2Manager`, `ChameleonManager`, `OpenstackManager`, `OracleManager`, `LibcloudManager`, `CloudBaseManager`, `base.py`) define `def list(self, ...)` which shadows built-in `list[...]` in subsequent method return annotations unless `from __future__ import annotations` is imported; additionally `pyproject.toml` on `dev3` specifies `requires-python = ">=3.15.2"` instead of `>=3.12`.
+### [week/oct29](week/oct29/README.md)
+- Reorganized SPORTSSTATS package into src/sports/ with root Makefile and updated pyproject.toml (commit a2477db).
+- Saved backup-pre-polish branch and implemented Post 169 code review updates (commit 7fea762).
+- Added FastAPI create_app with Pydantic query validation, config.yaml loader, and structured server logging.
+- Refactored validate_rows in store.py into smaller validator helpers and extracted strip_ansi in cloud.py.
+- Populated MkDocs documentation hub (0 warnings) and pushed Multipass smoke test logs on dev2 (commit 602c286).
+
+### [week/oct22](week/oct22/README.md)
+- Accepted cloudmesh-ai organization and luc team invitations on GitHub for Sugwu123.
+- Verified collaborator write permissions on cloudmesh-ai/cloudmesh-ai-vm-results.
+- Audited PR 75 (cmx vm doctor) integration into upstream cloudmesh-ai-vm.
+- Prepared compromised Jetstream2 SSH key and application credential revocation protocol.
+
+### [week/oct15](week/oct15/README.md)
+- Completed SPORTSSTATS midterm progress report and chronological NBA dataset evaluation (2,460 team-game rows).
+- Evaluated online logistic regression Brier score (0.2533) against historical rate (0.2572) and 50% baseline (0.2500).
+- Verified 34 passing unit and HTTP integration tests on macOS and Ubuntu AWS EC2 guest instance.
+- Documented three-cloud architecture (Multipass, Chameleon KVM@TACC, AWS EC2), cost appendix, and AI disclosure.
+
+### [week/oct8](week/oct8/README.md)
+- Implemented cmx cloud plan and smoke validation adapter in sports/cloud.py.
+- Added single-provider Google Compute Engine driver constructor initialization patch and unit tests.
+- Added historical FiveThirtyEight NBA import pipeline and chronological model evaluation endpoints.
+
+### [week/oct1](week/oct1/README.md)
+- Automated local Multipass VM deployment and systemd service recovery in sports/vm.py.
+- Verified 23 unit and HTTP integration tests inside the Ubuntu Multipass guest VM.
+- Validated database persistence across VM stop/start lifecycle operations.
+
+### [week/sep24](week/sep24/README.md)
+- Configured Jetstream2 OpenStack credentials, SSH key pairs, and automation Makefile.
+- Built initial SPORTSSTATS SQLite storage layer, CSV validator, CLI, and JSON HTTP server.
+
+### [week/sep17](week/sep17/README.md)
+- Tested initial Chameleon Cloud Ubuntu VM provisioning and SSH connectivity.
+- Documented local and remote virtual machine setup in vms.md.
+
+### [week/sep10](week/sep10/README.md)
+- Set up local macOS development environment, Python virtual environment, and Multipass hypervisor.
+- Initialized student repository structure and Cloudmesh CLI configuration.
+
+### [week/sep3](week/sep3/README.md)
+- Completed course onboarding, GitHub account setup (Sugwu123), and cloud allocation requests.
+- Defined initial solo project scope for sports statistics and probability analysis.

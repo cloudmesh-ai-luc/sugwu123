@@ -97,7 +97,7 @@ python3 -m sports.cloud smoke --cloud aws --name SPORTSSTATS
 
 The check looks for a success marker, data rows, and evaluated games in the output. A command returning without an error is not enough by itself. The reviewed upstream AWS provider has driver setup and method problems that remain separate from the working SSH deployment.
 
-The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week4/jetstream/Makefile) and [Week 3 VM evidence](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week3/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](aws-setup.md) and [AWS evidence](evidence/aws-oct15.md) give more detail.
+The integration was checked against `dev2` at `f55d7bd`. Jetstream2 uses OpenStack, and the repository already contains [Week 4 Jetstream2 management commands](assignments/week/sep24/jetstream/Makefile) and [Week 3 VM evidence](https://github.com/cloudmesh-ai-luc/sugwu123/blob/main/assignments/week/sep17/vms.md). The existing Chameleon option in the application helper comes from earlier coursework; a Jetstream2-specific cmx profile still needs configuration and recorded validation. [AWS setup](aws-setup.md) and [AWS evidence](evidence/aws-oct15.md) give more detail.
 
 ## DevOps
 
