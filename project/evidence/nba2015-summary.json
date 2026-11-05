@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-15T12:52:49.392496+00:00",
+  "environment": "Preparation environment, Python 3.12.14; not Mac or cloud execution",
+  "dataset": {
+    "kind": "imported",
+    "source": "https://raw.githubusercontent.com/fivethirtyeight/data/6d880e939ad3d11d94c137c911681b3cf718fd74/nba-elo/nbaallelo.csv",
+    "rights": "FiveThirtyEight, Historical NBA Elo, CC BY 4.0; original game information: Basketball-Reference. Converted to team totals only; aggregate entries are not players.",
+    "rows": 2460
+  },
+  "selection": {
+    "team": "CHI",
+    "player": null,
+    "opponent": null,
+    "threshold": 100.5,
+    "metric": "Team points"
+  },
+  "summary": {
+    "games": 82,
+    "mean_points": 100.79268292682927,
+    "wins": 50,
+    "losses": 32,
+    "draws": 0,
+    "exceeded_threshold": 43,
+    "historical_rate": 0.524390243902439,
+    "wilson_95_interval": [
+      0.4176473297995616,
+      0.6289502007521409
+    ]
+  },
+  "comparison": {
+    "method": "Online logistic regression; earlier dates only",
+    "features": [
+      "intercept",
+      "prior five-game mean minus threshold / 20",
+      "previous-game points minus threshold / 20"
+    ],
+    "learning_rate": 0.05,
+    "training_starts_after": 5,
+    "minimum_evaluation_history": 10,
+    "evaluated_games": 72,
+    "logistic_brier_score": 0.2533129305645343,
+    "historical_brier_score": 0.2571942891928567,
+    "constant_half_brier_score": 0.25
+  },
+  "source_revision": "6d880e939ad3d11d94c137c911681b3cf718fd74",
+  "source_sha256": "d46ed3540ee8d9eca31b3e94cc8c777e0be5156173d814ebf65b8195e8d616bc",
+  "interpretation": "The logistic model has lower Brier error than the historical-rate baseline but higher error than the constant 50% baseline on the same 72 games. This single sample does not establish future predictive accuracy."
+}
