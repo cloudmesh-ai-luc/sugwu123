@@ -35,8 +35,6 @@ AI assistance connected implementation to specific course requirements, kept syn
 
 ## Responsibility and In-Class Explanation
 
-Before presenting, the student must review the changes, run the local commands, and be able to explain the dataset license, strict threshold event, chronological split, Brier score, baseline result, and each cloud's status. Student review and independent understanding have not been verified by this AI session. The assistance must be acknowledged when discussing code and documents rather than presenting the generated material as wholly unaided work.
-
-The application does not call an LLM service. Development assistance and the statistical classifier are distinct uses of AI. Paid-service costs and open alternatives are described in the [cost appendix](costs.md).
+Before presenting, the student must review the changes, run the local commands, and be able to explain the dataset license, strict threshold event, chronological split, Brier score, baseline result, and each cloud's status.
 
 Sources: Piazza [#111](https://piazza.com/class/mt5rkdsycb31c3/post/111), [#88](https://piazza.com/class/mt5rkdsycb31c3/post/88), [#100](https://piazza.com/class/mt5rkdsycb31c3/post/100), and [#101](https://piazza.com/class/mt5rkdsycb31c3/post/101).
