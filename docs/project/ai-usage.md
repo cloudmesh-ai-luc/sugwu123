@@ -40,5 +40,3 @@ Before presenting, the student must review the changes, run the local commands, 
 The application does not call an LLM service. Development assistance and the statistical classifier are distinct uses of AI. Paid-service costs and open alternatives are described in the [cost appendix](costs.md).
 
 Sources: Piazza [#111](https://piazza.com/class/mt5rkdsycb31c3/post/111), [#88](https://piazza.com/class/mt5rkdsycb31c3/post/88), [#100](https://piazza.com/class/mt5rkdsycb31c3/post/100), and [#101](https://piazza.com/class/mt5rkdsycb31c3/post/101).
-
-Acknowledgment: This disclosure was drafted with substantial OpenAI Codex assistance and requires the student's review for an accurate account of use.
