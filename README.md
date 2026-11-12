@@ -30,6 +30,7 @@ All weekly coursework is organized by date inside [`assignments/week/`](assignme
 
 | Week | Folder | Highlights |
 |---|---|---|
+| **Week 11** | [week/nov12](assignments/week/nov12/README.md) | SSH git remotes in `~/work/`, `code .` terminal setup, Jetstream2 LLM in Cline verification, and `cloudmesh-ai-vm` Issue #116 |
 | **Week 10** | [week/nov5](assignments/week/nov5/README.md) | `dev3` migration, `test_config.py` (13/13 passed), Python 3.13 annotation fixes, Multipass smoke tests, and `STATUS.md` |
 | **Week 9** | [week/oct29](assignments/week/oct29/README.md) | `src/sports/` package layout, root `Makefile`, `pyproject.toml`, MkDocs hub, and Post #169 code review upgrades (FastAPI/Pydantic, `config.yaml`, structured logging) |
 | **Week 8** | [week/oct22](assignments/week/oct22/README.md) | `@cloudmesh-ai` and `luc` team onboarding, `cloudmesh-ai-vm-results` access, and Jetstream2 compromised-key protocol |

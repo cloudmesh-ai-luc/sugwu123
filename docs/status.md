@@ -1,6 +1,14 @@
 ## Status & Weekly Work Log — Sydel Ugwu (`sugwu123`)
 
+### [week/nov12](https://github.com/cloudmesh-ai-luc/sugwu123/tree/main/assignments/week/nov12/README.md)
+- Configured macOS zsh PATH (`~/.local/bin/code`) to launch multiple isolated VS Code instances directly from terminal via `code .` (Post #185).
+- Converted all class repositories in `~/work/` (`sugwu123`, `cloudmesh-ai-vm`, `cloudmesh-ai-vm-results`, `cloudmesh-ai-common`, `cloudmesh-ai-llm-mock`) to SSH remotes (`git@github.com:...`) and verified passphrase-protected Ed25519 SSH key authentication (`Hi Sugwu123! You've successfully authenticated`) loaded into macOS Keychain `ssh-agent` (Post #185 & Post #188).
+- Verified Piazza real-time and auto-follow notification settings and completed Post #187 and Post #189 confirmations.
+- Connected VS Code Cline (`OpenAI Compatible` provider) to Jetstream2 LLM (`https://llm.jetstream-cloud.org/api`, model `gemma-4-31b-it`) with restricted local credentials (`~/.config/jetstream/env`, `chmod 600`).
+- Evaluated `SPORTSSTATS` FastAPI/Pydantic endpoints and `cloudmesh-ai-vm` (`dev3`) tasks using Plan/Act verification workflow and 34-test regression suite (`make test`).
+
 ### [week/nov5](https://github.com/cloudmesh-ai-luc/sugwu123/tree/main/assignments/week/nov5/README.md)
+-Verified Jetstream2 LLM (`https://llm.jetstream-cloud.org/api`) integration in VS Code Cline (`Plan`/`Act` modes) with local `~/.config/jetstream/env` (`chmod 600`) and validated all LLM-assisted `SPORTSSTATS` updates against the 34-test suite (`make test`).
 - Switched cloudmesh-ai-vm to dev3 and passed all 13 configuration checks in tests/smoke/test_config.py.
 - Resolved Python 3.13 list type annotation shadowing across DockerManager and 10 VM provider classes.
 - Verified cmx vm provider list and cmx vm doctor (HEALTHY) on dev3.

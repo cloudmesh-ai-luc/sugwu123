@@ -4,6 +4,7 @@
 
 ## Dated Weekly Folders
 
+- [week/nov12](week/nov12/README.md)
 - [week/nov5](week/nov5/README.md)
 - [week/oct29](week/oct29/README.md)
 - [week/oct22](week/oct22/README.md)
