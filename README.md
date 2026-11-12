@@ -1,4 +1,4 @@
-# Sydel Ugwu — COMP 388: Cloud, DevOps & AI
+# Sydel Ugwu (COMP 388: Cloud, DevOps & AI)
 
 Repository for **Sydel Ugwu ** in COMP 388: Cloud, DevOps, and AI at Loyola University Chicago.
 
