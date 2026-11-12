@@ -1,0 +1,42 @@
+=== Issue #116 Unit Tests ===
+============================= test session starts ==============================
+platform darwin -- Python 3.13.7, pytest-9.2.0, pluggy-1.7.0 -- /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/sydelugwu/work/cloudmesh-ai-vm
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 5 items
+
+tests/unit/test_vm_status.py::test_vm_status_displays_vms_fips_and_reservations PASSED [ 20%]
+tests/unit/test_vm_status.py::test_vm_status_handles_empty_resources PASSED [ 40%]
+tests/unit/test_vm_purge.py::test_vm_purge_deletes_vms_fips_and_reservations_with_yes PASSED [ 60%]
+tests/unit/test_vm_purge.py::test_vm_purge_idempotent_when_empty PASSED  [ 80%]
+tests/unit/test_vm_purge.py::test_vm_purge_continues_on_error_and_prompts_without_yes PASSED [100%]
+
+============================== 5 passed in 0.45s ===============================
+
+=== cmx vm status --cloud=multipass ===
+=== Status: multipass ===
+              VMs (multipass)               
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Name           ┃ Status  ┃ IP            ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ balmy-bedbug   │ Stopped │               │
+│ sports-midterm │ Running │ 192.168.252.6 │
+│ week2-vm       │ Running │ 192.168.252.3 │
+│ week4-local    │ Running │ 192.168.252.4 │
+└────────────────┴─────────┴───────────────┘
+Floating IPs (multipass): none
+Reservations (multipass): none
+
+=== cmx vm purge --help ===
+Usage: cmx vm purge [OPTIONS]
+
+  Delete all VMs, release floating IPs, and remove reservations.
+
+Options:
+  -y, --yes     Confirm the action without prompting.
+  --verbose     Enable verbose output
+  --debug       Enable debug logging
+  --cloud TEXT  Cloud provider override
+  --help        Show this message and exit.
