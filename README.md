@@ -1,6 +1,6 @@
-# Sydel Ugwu — COMP 388: Cloud, DevOps & AI (`sugwu123`)
+# Sydel Ugwu — COMP 388: Cloud, DevOps & AI
 
-Repository for **Sydel Ugwu (`Sugwu123`)** in COMP 388: Cloud, DevOps, and AI at Loyola University Chicago.
+Repository for **Sydel Ugwu ** in COMP 388: Cloud, DevOps, and AI at Loyola University Chicago.
 
 - **Documentation Site (MkDocs):** [https://cloudmesh-ai-luc.github.io/sugwu123/](https://cloudmesh-ai-luc.github.io/sugwu123/)
 - **Weekly Status Log:** [assignments/STATUS.md](assignments/STATUS.md)
