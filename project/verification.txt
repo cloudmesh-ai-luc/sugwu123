@@ -1,0 +1,51 @@
+Sports prototype preparation-environment verification
+Recorded: 2026-10-01T16:11:02.161086+00:00
+Python: 3.12.14
+
+Command: make -C sports test
+Exit code: 0
+
+make: Entering directory '/workspace/scratch/08c255ca3168/sports-midterm-work/sports'
+cd .. && python3 -m unittest discover -s sports/tests -v
+test_api_and_cli_return_same_analysis (test_sports.APITests.test_api_and_cli_return_same_analysis) ... ok
+test_health_and_options (test_sports.APITests.test_health_and_options) ... ok
+test_invalid_parameters_return_400_json (test_sports.APITests.test_invalid_parameters_return_400_json) ... ok
+test_static_assets_and_traversal (test_sports.APITests.test_static_assets_and_traversal) ... ok
+test_chronological_evaluation_excludes_same_day_and_future (test_sports.AnalyticsTests.test_chronological_evaluation_excludes_same_day_and_future) ... ok
+test_empty_filter_combination_has_no_rate (test_sports.AnalyticsTests.test_empty_filter_combination_has_no_rate) ... ok
+test_insufficient_history_has_no_evaluation_score (test_sports.AnalyticsTests.test_insufficient_history_has_no_evaluation_score) ... ok
+test_known_rate_and_strict_threshold (test_sports.AnalyticsTests.test_known_rate_and_strict_threshold) ... ok
+test_nonfinite_and_out_of_range_thresholds_are_rejected (test_sports.AnalyticsTests.test_nonfinite_and_out_of_range_thresholds_are_rejected) ... ok
+test_team_games_not_counted_once_per_player (test_sports.AnalyticsTests.test_team_games_not_counted_once_per_player) ... ok
+test_wilson_extreme_rates_have_uncertainty (test_sports.AnalyticsTests.test_wilson_extreme_rates_have_uncertainty) ... ok
+test_wilson_reference_values (test_sports.AnalyticsTests.test_wilson_reference_values) ... ok
+test_deployment_archive_excludes_data_and_symbolic_links (test_sports.DeploymentSafetyTests.test_deployment_archive_excludes_data_and_symbolic_links) ... ok
+test_vm_deletion_requires_exact_name_and_targets_one_vm (test_sports.DeploymentSafetyTests.test_vm_deletion_requires_exact_name_and_targets_one_vm) ... ok
+test_vm_name_cannot_select_coursework_or_all_instances (test_sports.DeploymentSafetyTests.test_vm_name_cannot_select_coursework_or_all_instances) ... ok
+test_csv_round_trip_and_provenance_persist (test_sports.StorageTests.test_csv_round_trip_and_provenance_persist) ... ok
+test_demo_reproducibility_and_expected_shape (test_sports.StorageTests.test_demo_reproducibility_and_expected_shape) ... ok
+test_duplicate_player_and_inconsistent_score_are_rejected (test_sports.StorageTests.test_duplicate_player_and_inconsistent_score_are_rejected) ... ok
+test_import_requires_source_url_and_rights (test_sports.StorageTests.test_import_requires_source_url_and_rights) ... ok
+test_invalid_replacement_preserves_prior_data (test_sports.StorageTests.test_invalid_replacement_preserves_prior_data) ... ok
+test_replacement_requires_explicit_flag (test_sports.StorageTests.test_replacement_requires_explicit_flag) ... ok
+test_reverse_team_score_consistency (test_sports.StorageTests.test_reverse_team_score_consistency) ... ok
+test_sql_values_are_bound_as_literals (test_sports.StorageTests.test_sql_values_are_bound_as_literals) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.623s
+
+OK
+make: Leaving directory '/workspace/scratch/08c255ca3168/sports-midterm-work/sports'
+
+Additional checks:
+- JavaScript parsed successfully with node --check sports/web/app.js.
+- VM bootstrap shell syntax passed bash -n.
+- git diff --check passed.
+- Default fictional dataset generated successfully: 144 player observations.
+
+Limits:
+- This output was recorded in the preparation environment, not on the student's Mac.
+- No live Multipass guest deployment was tested; Multipass is unavailable here.
+- Browser interaction and visual layout were not verified because the browser binary is unavailable.
+- These checks establish software behavior on fictional/test data, not real-world prediction accuracy.
+- Week 5's separate VM result remains 8 passed, 3 failed; see assignments/week5/README.md.
